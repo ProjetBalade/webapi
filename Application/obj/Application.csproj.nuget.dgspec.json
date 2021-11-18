@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\Application.csproj": {}
+    "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\Application.csproj": {
+    "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\nicod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\obj\\",
+        "projectPath": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\André Tyranowski\\.nuget\\packages\\",
+        "outputPath": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nicod\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\André Tyranowski\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,6 +36,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -50,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.415\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

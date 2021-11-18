@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\nicod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\obj\\",
+        "projectPath": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\André Tyranowski\\.nuget\\packages\\",
+        "outputPath": "C:\\BAC3\\Technologies Internet\\codesourceAngular\\webapi\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nicod\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\André Tyranowski\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -35,6 +36,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "System.Data.SqlClient": {
               "target": "Package",
@@ -56,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.415\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
