@@ -9,7 +9,7 @@ namespace Infrastructure.SqlServer.System
         {
             var script =
                 File.ReadAllText(
-                    @"Init.sql");
+                    @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Init.sql");
 
             var connection = Database.GetConnection();
             connection.Open();
@@ -26,7 +26,7 @@ namespace Infrastructure.SqlServer.System
         {
             var script =
                 File.ReadAllText(
-                    @"Data.sql");
+                    @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Data.sql");
 
             var connection = Database.GetConnection();
             connection.Open();
