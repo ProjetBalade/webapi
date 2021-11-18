@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace Domain
@@ -10,7 +11,7 @@ namespace Domain
         
         public string RaceDog { get; set; }
         
-        public DateType DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         
         public int IdUser { get; set; }
 

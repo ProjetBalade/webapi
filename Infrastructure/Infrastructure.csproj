@@ -5,12 +5,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="SqlServer\System" />
-      <Folder Include="SqlServer\Utils" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>
