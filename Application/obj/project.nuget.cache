@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YWMZuY6RW476FdIEAZYuJCw9M7hEe9T8fOAv24iUVPTCXE3Qjj43nqFCorJMih1mhAMIOQt3CsZqMMfPtWhYYg==",
+  "dgSpecHash": "XiziACB8V6xoizkrRIrCKVaTyZ7SQi+3wb3SEO+8lchcsS/OInYXZnOHDekBOUZVoLYh5ItYkpWCxxXng8IGBA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Application\\Application.csproj",
+  "projectFilePath": "/Users/rabha/RiderProjects/webapi/Application/Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

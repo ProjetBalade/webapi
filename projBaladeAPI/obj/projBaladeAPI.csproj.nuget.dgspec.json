@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\projBaladeAPI.csproj": {}
+    "/Users/rabha/RiderProjects/webapi/projBaladeAPI/projBaladeAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\projBaladeAPI.csproj": {
+    "/Users/rabha/RiderProjects/webapi/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\projBaladeAPI.csproj",
-        "projectName": "projBaladeAPI",
-        "projectPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\projBaladeAPI.csproj",
-        "packagesPath": "C:\\Users\\nicod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\obj\\",
+        "projectUniqueName": "/Users/rabha/RiderProjects/webapi/Domain/Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "/Users/rabha/RiderProjects/webapi/Domain/Domain.csproj",
+        "packagesPath": "/Users/rabha/.nuget/packages/",
+        "outputPath": "/Users/rabha/RiderProjects/webapi/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nicod\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/rabha/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -46,6 +46,120 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.120/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/rabha/RiderProjects/webapi/Infrastructure/Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/rabha/RiderProjects/webapi/Infrastructure/Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "/Users/rabha/RiderProjects/webapi/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/Users/rabha/.nuget/packages/",
+        "outputPath": "/Users/rabha/RiderProjects/webapi/Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/rabha/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/rabha/RiderProjects/webapi/Domain/Domain.csproj": {
+                "projectPath": "/Users/rabha/RiderProjects/webapi/Domain/Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.120/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/rabha/RiderProjects/webapi/projBaladeAPI/projBaladeAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/rabha/RiderProjects/webapi/projBaladeAPI/projBaladeAPI.csproj",
+        "projectName": "projBaladeAPI",
+        "projectPath": "/Users/rabha/RiderProjects/webapi/projBaladeAPI/projBaladeAPI.csproj",
+        "packagesPath": "/Users/rabha/.nuget/packages/",
+        "outputPath": "/Users/rabha/RiderProjects/webapi/projBaladeAPI/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/rabha/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/rabha/RiderProjects/webapi/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/rabha/RiderProjects/webapi/Infrastructure/Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
@@ -53,7 +167,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.415\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.120/RuntimeIdentifierGraph.json"
         }
       }
     }

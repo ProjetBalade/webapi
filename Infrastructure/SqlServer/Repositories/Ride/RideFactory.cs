@@ -1,0 +1,28 @@
+using System;
+using System.Data.SqlClient;
+
+namespace Infrastructure.SqlServer.Repositories.Ride
+{
+    public class RideFactory 
+    {
+        public Domain.Ride CreateFromSqlDataReader(SqlDataReader reader)
+        {
+            return  new Domain.Ride()
+            {
+                Id = reader.GetInt32(reader.GetOrdinal(RideRepository.ColId)),
+                NameRide= reader.GetString(reader.GetOrdinal(RideRepository.ColNameRide)),
+                Place = reader.GetString(reader.GetOrdinal(RideRepository.ColPlace)),
+                Description = reader.GetString(reader.GetOrdinal(RideRepository.ColDescription)),
+                Difficulty = reader.GetInt32(reader.GetOrdinal(RideRepository.ColDifficulty)),
+                Website = reader.GetString(reader.GetOrdinal(RideRepository.ColWebsite)),
+                Schedule = reader.GetString(reader.GetOrdinal(RideRepository.ColSchedule)),
+                Photo = reader.GetString(reader.GetOrdinal(RideRepository.ColPhoto)),
+                Score = reader.GetInt32(reader.GetOrdinal(RideRepository.ColScore)),
+                IdUser = reader.GetInt32(reader.GetOrdinal(RideRepository.ColIdUser)),
+                
+                
+            };
+        }
+        
+    }
+}

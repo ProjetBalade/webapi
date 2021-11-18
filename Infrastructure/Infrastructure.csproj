@@ -9,9 +9,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="SqlServer\Repositories" />
-      <Folder Include="SqlServer\System" />
       <Folder Include="SqlServer\Utils" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
 </Project>
