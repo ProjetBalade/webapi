@@ -454,19 +454,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nicod\\.nuget\\packages\\": {}
+    "/Users/aleynabastu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "/Users/aleynabastu/RiderProjects/projetBalade/webapi/Infrastructure/Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\nicod\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Infrastructure\\obj\\",
+      "projectPath": "/Users/aleynabastu/RiderProjects/projetBalade/webapi/Infrastructure/Infrastructure.csproj",
+      "packagesPath": "/Users/aleynabastu/.nuget/packages/",
+      "outputPath": "/Users/aleynabastu/RiderProjects/projetBalade/webapi/Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nicod\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/aleynabastu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -508,7 +508,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.415\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.414/RuntimeIdentifierGraph.json"
       }
     }
   }

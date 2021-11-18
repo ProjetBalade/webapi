@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w72NYSb5dgIZY4BEwcJchTbbIOGxs358/egjpXsK5+ZTCAQhpE+bIM7yDXj+LU1/y9xWutoykEP9EU134XEl3Q==",
+  "dgSpecHash": "ttlnxpBrODrZXxFNPfobGwDdYgCMpStc4jqMn1c6HGQ40dy+KvivyESqvPIkc35drdCQ0TR3Dm96rNoj2EBB8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\projBaladeAPI\\projBaladeAPI.csproj",
+  "projectFilePath": "/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/projBaladeAPI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
