@@ -17,3 +17,14 @@
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.dll
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.pdb
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.genruntimeconfig.cache
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/System.Data.SqlClient.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/runtimes/win-arm64/native/sni.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/sni.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Domain.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Infrastructure.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Infrastructure.pdb
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Domain.pdb
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.csproj.CopyComplete

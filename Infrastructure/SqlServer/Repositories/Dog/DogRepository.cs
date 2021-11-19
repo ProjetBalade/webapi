@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Infrastructure.SqlServer.Repositories.Dog
 {
-    public class DogRepository
+    public class DogRepository : IDogRepository
     {
         public const string TableName = "dog";
 
@@ -31,10 +32,24 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             return dogs;
         }
 
-       
+        public Domain.Dog GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-       
-    
-        
+        public Domain.Dog Create(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(int id, Domain.Dog dog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
