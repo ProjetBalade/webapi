@@ -1,0 +1,15 @@
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Application.deps.json
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Application.dll
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Application.pdb
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\elili\RiderProjects\webapi\Application\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.csproj.AssemblyReference.cache
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfoInputs.cache
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfo.cs
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.dll
+C:\Users\elili\RiderProjects\webapi\Application\obj\Debug\netcoreapp3.1\Application.pdb
