@@ -13,11 +13,11 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 NameRide= reader.GetString(reader.GetOrdinal(RideRepository.ColNameRide)),
                 Place = reader.GetString(reader.GetOrdinal(RideRepository.ColPlace)),
                 Description = reader.GetString(reader.GetOrdinal(RideRepository.ColDescription)),
-                Difficulty = reader.GetInt32(reader.GetOrdinal(RideRepository.ColDifficulty)),
                 Website = reader.GetString(reader.GetOrdinal(RideRepository.ColWebsite)),
+                Difficulty = reader.GetByte(reader.GetOrdinal(RideRepository.ColDifficulty)),
                 Schedule = reader.GetString(reader.GetOrdinal(RideRepository.ColSchedule)),
                 Photo = reader.GetString(reader.GetOrdinal(RideRepository.ColPhoto)),
-                Score = reader.GetInt32(reader.GetOrdinal(RideRepository.ColScore)),
+                Score = reader.GetByte(reader.GetOrdinal(RideRepository.ColScore)),
                 IdUser = reader.GetInt32(reader.GetOrdinal(RideRepository.ColIdUser)),
                 
                 

@@ -9,10 +9,10 @@ namespace Domain
         public String Place { get; set; }
         public String Description { get; set; }
         public String Website { get; set; }
-        public int Difficulty { get; set; }
+        public Byte Difficulty { get; set; }
         public String Schedule { get; set; }
         public String Photo { get; set; }
-        public int Score { get; set; }
+        public Byte Score { get; set; }
         public int IdUser { get; set; }
 
         public Ride(int idUser)

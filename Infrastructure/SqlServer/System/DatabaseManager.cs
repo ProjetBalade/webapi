@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Infrastructure.SqlServer.System
 {
-    public class DatabaseManager
+    public class DatabaseManager : IDatabaseManager
     {
         public void CreateDatabaseAndTables()
         {
