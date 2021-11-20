@@ -18,7 +18,7 @@ namespace projBaladeAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/database/init")]
+        [Route("init")]
         public IActionResult CreateDatabaseAndTables()
         {
             if (_environment.IsProduction())
@@ -29,7 +29,7 @@ namespace projBaladeAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/database/data")]
+        [Route("fill")]
         public IActionResult FillTables()
         {
             if (_environment.IsProduction())

@@ -37,7 +37,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             throw new NotImplementedException();
         }
 
-        public Domain.Dog Create(string name)
+        public Domain.Dog Create(Domain.Dog dog)
         {
             throw new NotImplementedException();
         }

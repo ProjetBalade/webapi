@@ -28,3 +28,8 @@
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Infrastructure.pdb
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Domain.pdb
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.csproj.CopyComplete
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Microsoft.OpenApi.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.Swagger.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.MvcApplicationPartsAssemblyInfo.cs

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.SqlServer.Repositories.Dog;
+using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,11 +14,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace WebApi
+namespace projBaladeAPI
 {
     public class Startup
     {
-        public static readonly string MyOrigins = "MyOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,17 +28,10 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy(MyOrigins, builder =>
-                {
-                    builder.WithOrigins("http://localhost:4200")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
-            });
-            
             services.AddSingleton<IDogRepository, DogRepository>();
+            services.AddSingleton<IDatabaseManager, DatabaseManager>();
+
+           
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
         }
@@ -57,8 +50,7 @@ namespace WebApi
                  app.UseHttpsRedirection();
             }
 
-           
-            app.UseCors(MyOrigins);
+            
 
             app.UseRouting();
 

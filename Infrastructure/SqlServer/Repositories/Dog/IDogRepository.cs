@@ -6,7 +6,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
     {
         List<Domain.Dog> GetAll();
         Domain.Dog GetById(int id);
-        Domain.Dog Create(string name);
+        Domain.Dog Create(Domain.Dog dog);
         bool Update(int id, Domain.Dog dog);
         bool Delete(int id);
     }
