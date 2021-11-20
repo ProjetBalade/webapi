@@ -20,6 +20,11 @@ namespace Application.Services.UseCases.Dog
 
             return Mapper.GetInstance().Map<List<OutputDtoDog>>(dogs);
         }
+
+        public List<OutputDtoDog> Execute(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }
