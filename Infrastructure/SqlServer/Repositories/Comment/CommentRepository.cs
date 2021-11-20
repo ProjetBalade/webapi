@@ -94,8 +94,8 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             
             command.Parameters.AddWithValue("@" + ColContent, comment.Content);
             command.Parameters.AddWithValue("@" + ColScore, comment.Score);
-            command.Parameters.AddWithValue("@" + ColDifficulty, comment.Difficulty);
             command.Parameters.AddWithValue("@" + ColImage, comment.Image);
+            command.Parameters.AddWithValue("@" + ColDifficulty, comment.Difficulty);
             command.Parameters.AddWithValue("@" + ColIdUser, comment.IdUser);
             command.Parameters.AddWithValue("@" + ColIdRide, comment.IdRide);
 

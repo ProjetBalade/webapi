@@ -35,7 +35,7 @@ namespace projBaladeAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{id:int}")]
+        [Route("{id:int}/comment")]
         public Comment GetById(int id)
         {
             return _commentRepository.GetById(id);
@@ -44,7 +44,7 @@ namespace projBaladeAPI.Controllers
         [HttpPost]
         [ProducesResponseType(201)]
 
-        public ActionResult<OutputDtoComment> Create(InputDtoCreateComment dto)
+        public ActionResult<OutputDtoComment> Create([FromBody] InputDtoCreateComment dto)
         {
             return StatusCode(201, _useCaseCreateComment.Execute(dto));
         }

@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace Application.UseCases.Utils
 {
-    public class Mapper
+    public static class Mapper
     {
         private static AutoMapper.Mapper _instance;
 

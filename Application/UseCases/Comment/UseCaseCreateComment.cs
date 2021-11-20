@@ -18,7 +18,6 @@ namespace Application.UseCases.Comment
         public OutputDtoComment Execute(InputDtoCreateComment dto)
         {
             var commentFromDto = Mapper.GetInstance().Map<Domain.Comment>(dto);
-
             var commentFromDb = _commentRepository.Create(commentFromDto);
 
             return Mapper.GetInstance().Map<OutputDtoComment>(commentFromDb);
