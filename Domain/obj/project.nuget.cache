@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "X1GobUpGnsH5md10e/sVkuenhWROwfDVkugaXNBA/GdZJJ5ONJFsLysMVjpmXz6tl1MUf7ZEx9t9t7Rtegpweg==",
+  "dgSpecHash": "ZIRjbBop7ZrOZbDkK+t0xPV4Bxqt6WuLWMMNfKjuHOtg/DQGTjKQ1XFnFFfaZEE54/1iTf/Ay/YwnZP0n7pFuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nicod\\Documents\\Ecole\\HELHa\\BAC3\\Projet\\ProjetBalade\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\elili\\RiderProjects\\webapi\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elili\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\elili\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\elili\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\elili\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
   "logs": []
 }
