@@ -19,14 +19,16 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseCreateDog _useCaseCreateDog;
         private readonly UseCaseUpdateDog _useCaseUpdateDog;
         private readonly UseCaseDeleteDog _useCaseDeleteDog;
+        private IDogRepository _dogRepository;
 
-        public DogController(UseCaseGetAllDog useCaseGetAllDog, UseCaseGetDog useCaseGetDog, UseCaseCreateDog useCaseCreateDog, UseCaseUpdateDog useCaseUpdateDog, UseCaseDeleteDog useCaseDeleteDog)
+        public DogController(UseCaseGetAllDog useCaseGetAllDog, UseCaseGetDog useCaseGetDog, UseCaseCreateDog useCaseCreateDog, UseCaseUpdateDog useCaseUpdateDog, UseCaseDeleteDog useCaseDeleteDog, IDogRepository dogRepository)
         {
             _useCaseGetAllDog = useCaseGetAllDog;
             _useCaseGetDog = useCaseGetDog;
             _useCaseCreateDog = useCaseCreateDog;
             _useCaseUpdateDog = useCaseUpdateDog;
             _useCaseDeleteDog = useCaseDeleteDog;
+            _dogRepository = dogRepository;
         }
         
 
@@ -60,10 +62,10 @@ namespace projBaladeAPI.Controllers
         {
             return _useCaseCreateDog.Execute(dog);
         }
-        
+
         [HttpPut]
         [Route("{id:int}")]
-        public ActionResult<OutputDtoDog> Update(int id, [FromBody] InputDtoDog dog)
+        /*public ActionResult<OutputDtoDog> Update(int id, [FromBody] InputDtoDog dog)
         {
             try
             {
@@ -72,33 +74,42 @@ namespace projBaladeAPI.Controllers
             catch (DogNotFoundException e)
             {
                 /*Console.WriteLine(e);
-                throw;*/
+                throw;#1#
                 return StatusCode(404);
             }
            
+        }*/
+        public ActionResult Update(int id, Dog dog)
+        {
+            if (_dogRepository.Update(id, dog))
+            {
+                return Ok();
+            }
+
+            return NotFound();
         }
         
         [HttpDelete]
         [Route("{id:int}")]
         public ActionResult Delete(int id)
         {
-            /*if (_todoRepository.Delete(id))
+            if (_dogRepository.Delete(id))
             {
                 return Ok();
             }
 
-            return NotFound();*/
+            return NotFound();
             
-            try
+            /*try
             {
                 return StatusCode(200,_useCaseDeleteDog.Execute(id));
             }
             catch (DogNotFoundException e)
             {
                 /*Console.WriteLine(e);
-                throw;*/
+                throw;#1#
                 return StatusCode(404);
-            }
+            }*/
         }
 
     }
