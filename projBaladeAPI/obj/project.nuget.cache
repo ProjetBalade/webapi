@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "NaX9DEydP3FppLuBYCK3Uk6ddu4zqYHWqqMtuf7mKE6SYMMydwdZLaqVCrxouEYC1uGOP1+WlITDS/0foTppcQ==",
+  "dgSpecHash": "mUgdOe/I8f4+KCvN0FcWrXVNhPWJ7P7yQFdOmaW9lZGhqy2Lkht0tR5kdnmj54Ii20zM8+65mxrrR/i7yXNfmQ==",
   "success": true,
   "projectFilePath": "/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/projBaladeAPI.csproj",
   "expectedPackageFiles": [
+    "/Users/aleynabastu/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/Users/aleynabastu/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
@@ -17,6 +19,7 @@
     "/Users/aleynabastu/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/system.data.sqlclient/4.8.3/system.data.sqlclient.4.8.3.nupkg.sha512",
+    "/Users/aleynabastu/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg.sha512",
     "/Users/aleynabastu/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512"
   ],

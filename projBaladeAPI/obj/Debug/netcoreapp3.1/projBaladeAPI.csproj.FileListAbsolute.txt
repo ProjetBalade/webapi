@@ -33,3 +33,6 @@
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/obj/Debug/netcoreapp3.1/projBaladeAPI.MvcApplicationPartsAssemblyInfo.cs
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/AutoMapper.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Application.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/projBaladeAPI/bin/Debug/netcoreapp3.1/Application.pdb

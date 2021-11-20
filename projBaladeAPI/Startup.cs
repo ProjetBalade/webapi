@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Services.UseCases.Dog;
 using Infrastructure.SqlServer.Repositories.Dog;
 using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +31,12 @@ namespace projBaladeAPI
         {
             services.AddSingleton<IDogRepository, DogRepository>();
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
+
+            services.AddSingleton<UseCaseGetAllDog>();
+            services.AddSingleton<UseCaseGetDog>();
+            services.AddSingleton<UseCaseCreateDog>();
+            services.AddSingleton<UseCaseUpdateDog>();
+            services.AddSingleton<UseCaseDeleteDog>();
 
            
             services.AddControllers();

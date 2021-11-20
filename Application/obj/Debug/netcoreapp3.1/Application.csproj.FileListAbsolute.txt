@@ -1,0 +1,14 @@
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Application.deps.json
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Application.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Application.pdb
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Domain.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Infrastructure.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Domain.pdb
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/bin/Debug/netcoreapp3.1/Infrastructure.pdb
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.csprojAssemblyReference.cache
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.AssemblyInfoInputs.cache
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.AssemblyInfo.cs
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.csproj.CoreCompileInputs.cache
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.csproj.CopyComplete
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.dll
+/Users/aleynabastu/RiderProjects/projetBalade/webapi/Application/obj/Debug/netcoreapp3.1/Application.pdb
