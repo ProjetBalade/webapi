@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Services.UseCases.Dog;
+using Infrastructure.SqlServer.Repositories.Dog;
+using Infrastructure.SqlServer.System;
 using Application.UseCases.Ride;
 using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
@@ -29,8 +32,18 @@ namespace projBaladeAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IDogRepository, DogRepository>();
+            services.AddSingleton<IDatabaseManager, DatabaseManager>();
+
+            services.AddSingleton<UseCaseGetAllDog>();
+            services.AddSingleton<UseCaseGetDog>();
+            services.AddSingleton<UseCaseCreateDog>();
+            services.AddSingleton<UseCaseUpdateDog>();
+            services.AddSingleton<UseCaseDeleteDog>();
+
+           
             services.AddControllers();
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
 
             // Add repos
             services.AddSingleton<IRideRepository, RideRepository>();
@@ -47,18 +60,19 @@ namespace projBaladeAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
             {
-                app.UseDeveloperExceptionPage();
-            }
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1");
+            });
             
             app.UseSwagger();
 
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
 
-
             app.UseHttpsRedirection();
-
+            
             app.UseRouting();
 
             app.UseAuthorization();

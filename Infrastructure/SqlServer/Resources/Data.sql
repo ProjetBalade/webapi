@@ -9,4 +9,3 @@ values('admin', 'admin');
 
 insert into ride(nameRide, place, difficulty, idUser)
 values('testBalade1', 'Mons', 2, 1), ('testBalade2', 'Bruxelles', 5, 2);
-

@@ -1,12 +1,8 @@
-﻿
-using System.Collections.Generic;
-using Domain;
-using Infrastructure.SqlServer.Repositories.Ride;
-using Infrastructure.SqlServer.System;
+﻿using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 
-namespace WebApi.Controllers
+namespace projBaladeAPI.Controllers
 {
     [ApiController]
     [Route("api/database")]
@@ -14,7 +10,6 @@ namespace WebApi.Controllers
     {
         private readonly IHostEnvironment _environment;
         private readonly IDatabaseManager _databaseManager;
-        private readonly IRideRepository _rideRepository;
 
         public DatabaseController(IDatabaseManager databaseManager, IHostEnvironment environment)
         {
@@ -23,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/database/init")]
+        [Route("init")]
         public IActionResult CreateDatabaseAndTables()
         {
             if (_environment.IsProduction())
@@ -34,7 +29,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("api/database/data")]
+        [Route("fill")]
         public IActionResult FillTables()
         {
             if (_environment.IsProduction())
@@ -42,13 +37,6 @@ namespace WebApi.Controllers
             
             _databaseManager.FillTables();
             return Ok("Tables have been filled");
-        }
-        
-        [HttpGet]
-        [Route("getAll")]
-        public List<Ride> GetAll()
-        {
-            return _rideRepository.GetAll();
         }
     }
 }
