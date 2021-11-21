@@ -1,1 +1,9 @@
 /Infrastructure/Database.cs
+/Infrastructure/bin
+/Application/bin
+/Domain/bin
+/projBaladeAPI/bin
+/Infrastructure/obj
+/Application/obj
+/Domain/obj
+/projBaladeAPI/obj
