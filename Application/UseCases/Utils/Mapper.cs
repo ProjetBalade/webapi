@@ -1,4 +1,5 @@
 using System;
+using Application.Services.UseCases.Dog.DtosDog;
 using Application.UseCases.Ride.Dtos;
 using AutoMapper;
 
@@ -20,6 +21,8 @@ namespace Application.UseCases.Utils
                 // Source, Destination
                 cfg.CreateMap<Domain.Ride, OutPutDtoRide>();
                 cfg.CreateMap<InputDtoRide, Domain.Ride>();
+                cfg.CreateMap<Domain.Dog, OutputDtoDog>();
+                cfg.CreateMap<InputDtoDog, Domain.Dog>();
             });
             return new AutoMapper.Mapper(config);
         }

@@ -19,7 +19,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {CoLId} = @{CoLId}";
         public static readonly string ReqCreate = $"INSERT INTO {TableName}({CoLNameDog}, {CoLRaceDog}, {CoLDateBirth}, {CoLIdUser}) OUTPUT INSERTED.{CoLId} VALUES(@{CoLNameDog},@{CoLRaceDog},@{CoLDateBirth},@{CoLIdUser})";
         public static readonly string ReqUpdate = $"UPDATE {TableName} SET {CoLNameDog} = @{CoLNameDog}, {CoLRaceDog} = @{CoLRaceDog}, {CoLDateBirth} = @{CoLDateBirth},  {CoLIdUser} = @{CoLIdUser}  WHERE {CoLId} = @{CoLId}";
-        public static readonly string ReqDelete = $"DELETE {TableName}  WHERE {CoLId} = @{CoLId}";
+        public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {CoLId} = @{CoLId}";
        
         private readonly DogFactory _dogFactory = new DogFactory();
         public List<Domain.Dog> GetAll()
@@ -67,7 +67,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             command.Parameters.AddWithValue("@" + CoLRaceDog, dog.RaceDog);
             command.Parameters.AddWithValue("@" + CoLDateBirth, dog.DateOfBirth);
             command.Parameters.AddWithValue("@" + CoLIdUser, dog.IdUser);
-
+        
             return new Domain.Dog
             {
                 Id = (int) command.ExecuteScalar(),
@@ -78,7 +78,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             };
         }
 
-        public bool Update(int id, Domain.Dog dog)
+        public Domain.Dog Update(int id, Domain.Dog dog)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -93,11 +93,18 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             command.Parameters.AddWithValue("@" + CoLRaceDog, dog.RaceDog);
             command.Parameters.AddWithValue("@" + CoLDateBirth, dog.DateOfBirth);
             command.Parameters.AddWithValue("@" + CoLIdUser, dog.IdUser);
-
-            return command.ExecuteNonQuery() > 0;
+            command.ExecuteScalar();
+            return new Domain.Dog
+            {
+                Id = id,
+                NameDog = dog.NameDog,
+                RaceDog = dog.RaceDog,
+                DateOfBirth = dog.DateOfBirth ,
+                IdUser = dog.IdUser
+            };
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -108,8 +115,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
                 CommandText = ReqDelete
             };
             command.Parameters.AddWithValue("@" + CoLId, id);
-            
-            return command.ExecuteNonQuery() > 0;
+            command.ExecuteScalar();
         }
     }
 }

@@ -1,10 +1,12 @@
+using System;
 using Application.Services.UseCases.Dog.DtosDog;
 using Application.Services.UseCases.Utils;
+using Application.UseCases.Utils;
 using Infrastructure.SqlServer.Repositories.Dog;
 
 namespace Application.Services.UseCases.Dog
 {
-    public class UseCaseDeleteDog : IDelete<OutputDtoDog>
+    public class UseCaseDeleteDog : IDelete<bool>
     {
         private readonly IDogRepository _dogRepository;
 
@@ -14,11 +16,11 @@ namespace Application.Services.UseCases.Dog
         }
         
 
-        public OutputDtoDog Execute(int id)
+        public bool Execute(int id)
         {
-            var dog = _dogRepository.Delete(id);
+            _dogRepository.Delete(id);
 
-            return Mapper.GetInstance().Map<OutputDtoDog>(dog);
+            return true;
         }
     }
 

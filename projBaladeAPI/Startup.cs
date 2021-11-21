@@ -32,14 +32,10 @@ namespace projBaladeAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IDogRepository, DogRepository>();
+            
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
 
-            services.AddSingleton<UseCaseGetAllDog>();
-            services.AddSingleton<UseCaseGetDog>();
-            services.AddSingleton<UseCaseCreateDog>();
-            services.AddSingleton<UseCaseUpdateDog>();
-            services.AddSingleton<UseCaseDeleteDog>();
+            
 
            
             services.AddControllers();
@@ -47,12 +43,19 @@ namespace projBaladeAPI
 
             // Add repos
             services.AddSingleton<IRideRepository, RideRepository>();
+            services.AddSingleton<IDogRepository, DogRepository>();
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
             
             // Add use cases
             services.AddSingleton<UseCaseGetAllRide>();
             services.AddSingleton<UseCaseCreateRide>();
             services.AddSingleton<UseCaseUpdateRide>();
+            
+            services.AddSingleton<UseCaseGetAllDog>();
+            services.AddSingleton<UseCaseGetDog>();
+            services.AddSingleton<UseCaseCreateDog>();
+            services.AddSingleton<UseCaseUpdateDog>();
+            services.AddSingleton<UseCaseDeleteDog>();
 
 
         }

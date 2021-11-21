@@ -29,6 +29,9 @@ namespace projBaladeAPI.Controllers
             _useCaseUpdateDog = useCaseUpdateDog;
             _useCaseDeleteDog = useCaseDeleteDog;
             _dogRepository = dogRepository;
+            _useCaseDeleteDog = useCaseDeleteDog;
+            _useCaseUpdateDog = useCaseUpdateDog;
+
         }
         
 
@@ -79,21 +82,16 @@ namespace projBaladeAPI.Controllers
             }
            
         }*/
-        public ActionResult Update(int id, Dog dog)
+        public  ActionResult<OutputDtoDog> Update(int id, [FromBody] InputDtoDog dog)
         {
-            if (_dogRepository.Update(id, dog))
-            {
-                return Ok();
-            }
-
-            return NotFound();
+            return StatusCode(200, _useCaseUpdateDog.Execute(id, dog));
         }
         
         [HttpDelete]
         [Route("{id:int}")]
-        public ActionResult Delete(int id)
+        public ActionResult<bool> Delete(int id)
         {
-            if (_dogRepository.Delete(id))
+            if (_useCaseDeleteDog.Execute(id))
             {
                 return Ok();
             }

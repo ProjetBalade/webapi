@@ -21,5 +21,10 @@ namespace Application.UseCases.Ride
 
             return Mapper.GetInstance().Map<OutPutDtoRide>(rideFromDb);
         }
+
+        public OutPutDtoRide Execute(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

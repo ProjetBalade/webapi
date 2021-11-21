@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Application.Services.UseCases.Dog.DtosDog;
 using Application.Services.UseCases.Utils;
+using Application.UseCases.Utils;
 using Infrastructure.SqlServer.Repositories.Dog;
 
 namespace Application.Services.UseCases.Dog
