@@ -1,4 +1,5 @@
 using System;
+using Application.UseCases.Comment.Dtos;
 using Application.Services.UseCases.Dog.DtosDog;
 using Application.UseCases.Ride.Dtos;
 using AutoMapper;
@@ -23,8 +24,11 @@ namespace Application.UseCases.Utils
                 cfg.CreateMap<InputDtoRide, Domain.Ride>();
                 cfg.CreateMap<Domain.Dog, OutputDtoDog>();
                 cfg.CreateMap<InputDtoDog, Domain.Dog>();
+                cfg.CreateMap<InputDtoCreateComment, Domain.Comment>();
+                cfg.CreateMap<Domain.Comment, OutputDtoComment>();
             });
             return new AutoMapper.Mapper(config);
         }
     }
+    
 }

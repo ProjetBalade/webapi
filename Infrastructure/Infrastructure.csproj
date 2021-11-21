@@ -20,8 +20,5 @@
       <Folder Include="SqlServer\Utils" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-    </ItemGroup>
 
 </Project>

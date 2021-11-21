@@ -1,3 +1,4 @@
+﻿<<<<<<< HEAD
 namespace Infrastructure.SqlServer.System
 {
     public interface IDatabaseManager

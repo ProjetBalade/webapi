@@ -8,6 +8,9 @@ using Infrastructure.SqlServer.System;
 using Application.UseCases.Ride;
 using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
+using Application.UseCases.Comment;
+using Infrastructure.SqlServer.Repositories.Comment;
+using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +41,10 @@ namespace projBaladeAPI
             
 
            
+            //Add repos
+            services.AddSingleton<ICommentRepository, CommentRepository>();
+            services.AddSingleton<IDatabaseManager, DatabaseManager>();
+
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
 
@@ -56,6 +63,10 @@ namespace projBaladeAPI
             services.AddSingleton<UseCaseCreateDog>();
             services.AddSingleton<UseCaseUpdateDog>();
             services.AddSingleton<UseCaseDeleteDog>();
+            
+            services.AddSingleton<UseCaseGetAllComments>();
+            services.AddSingleton<UseCaseCreateComment>();
+
 
 
         }
