@@ -1,9 +1,8 @@
-﻿
-using Infrastructure.SqlServer.Repositories.User;
+﻿using Infrastructure.SqlServer.Repositories.User;
 using Services.UseCases.Utils;
 using Services.User.Dtos;
 
-namespace Services.User
+namespace Application.Services.UseCases.User
 {
     public class UseCaseCreateUser
     {
@@ -14,13 +13,13 @@ namespace Services.User
             _userRepository = userRepository;
         }
 
-        public OutputCreateUser Execute(InputCreateUser dto)
+        public OutputDtoUser Execute(InputDtoUser dto)
         {
             var userFromDto = Mapper.GetInstance().Map<Domain.User>(dto);
 
             var userFromDb = _userRepository.Create(userFromDto);
 
-            return Mapper.GetInstance().Map<OutputCreateUser>(userFromDb);
+            return Mapper.GetInstance().Map<OutputDtoUser>(userFromDb);
         }
     }
 }

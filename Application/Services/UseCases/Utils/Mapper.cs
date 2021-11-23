@@ -20,12 +20,8 @@ namespace Services.UseCases.Utils
                 // Source, Destination
                
 
-                cfg.CreateMap<InputDtoGetUser, Domain.User>();
-                cfg.CreateMap<Domain.User, OutputDtoGetUser>();
-                cfg.CreateMap<InputCreateUser, Domain.User>();
-                cfg.CreateMap<Domain.User, OutputCreateUser>();
-                cfg.CreateMap<InputDeleteUser, Domain.User>();
-                cfg.CreateMap<Domain.User, OutputDeleteUser>();
+                cfg.CreateMap<InputDtoUser, Domain.User>();
+                cfg.CreateMap<Domain.User, OutputDtoUser>();
             });
             return new AutoMapper.Mapper(config);
         }

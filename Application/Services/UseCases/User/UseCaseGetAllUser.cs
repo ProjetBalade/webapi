@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using Application.Services.UseCases.Utils;
 using Infrastructure.SqlServer.Repositories.User;
 using Services.UseCases.Utils;
 using Services.User.Dtos;
 
-namespace Services.User
+namespace Application.Services.UseCases.User
 {
-    public class UseCaseGetAllUser : IQuery<List<OutputDtoGetUser>>
+    public class UseCaseGetAllUser : IQuery<List<OutputDtoUser>>
     {
         private readonly IUserRepository _userRepository;
 
@@ -14,14 +15,17 @@ namespace Services.User
             _userRepository = userRepository;
         }
 
-        public List<OutputDtoGetUser> Execute()
+        public List<OutputDtoUser> Execute()
         {
             
             var itemFromDb = _userRepository.GetAll();
 
-            return Mapper.GetInstance().Map<List<OutputDtoGetUser>>(itemFromDb);
+            return Mapper.GetInstance().Map<List<OutputDtoUser>>(itemFromDb);
         }
 
-        
+        public List<OutputDtoUser> Execute(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

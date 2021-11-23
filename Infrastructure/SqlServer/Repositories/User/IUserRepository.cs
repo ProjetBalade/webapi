@@ -8,5 +8,8 @@ namespace Infrastructure.SqlServer.Repositories.User
         Domain.User Create(Domain.User user);
 
         bool Delete(int id);
+
+        Domain.User GetById(int id);
+        bool Update(int id, Domain.User user);
     }
 }

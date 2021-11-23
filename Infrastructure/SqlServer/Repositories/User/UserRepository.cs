@@ -8,7 +8,7 @@ namespace Infrastructure.SqlServer.Repositories.User
 {
     public partial class UserRepository : IUserRepository
     {
-        private readonly IDomainFactory<Domain.User> _factory = new UserFactory();
+        private readonly IDomainFactory<Domain.User> _userFactory = new UserFactory();
         public List<Domain.User> GetAll()
         {
             var users = new List<Domain.User>();
@@ -27,7 +27,7 @@ namespace Infrastructure.SqlServer.Repositories.User
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
             while (reader.Read())
             {
-                users.Add(_factory.CreateFromSqlReader(reader));
+                users.Add(_userFactory.CreateFromSqlReader(reader));
             }
             return  users;
         }
@@ -67,7 +67,39 @@ namespace Infrastructure.SqlServer.Repositories.User
             return command.ExecuteNonQuery() > 0;
 
         }
-        
-        
+
+        public Domain.User GetById(int id)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetById
+            };
+
+            command.Parameters.AddWithValue("@" + ColId, id);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
+        }
+
+        public bool Update(int id, Domain.User user)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqUpdate
+            };
+            command.Parameters.AddWithValue("@" + ColId, id);
+            command.Parameters.AddWithValue("@" + ColName, user.Name);
+            command.Parameters.AddWithValue("@" + colEmail, user.Email);
+            command.Parameters.AddWithValue("@" + colPassword, user.Password);
+
+            return command.ExecuteNonQuery() > 0;
+        }
     }
 }

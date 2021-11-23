@@ -1,3 +1,4 @@
+using Application.Services.UseCases.User;
 using Infrastructure.SqlServer.Repositories.User;
 using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,9 @@ namespace projBaladeAPI
             //USE CASES
             services.AddSingleton<UseCaseGetAllUser>();
             services.AddSingleton<UseCaseCreateUser>();
+            services.AddSingleton<UseCaseDeleteUser>();
+            services.AddSingleton<UseCaseGetUser>();
+            services.AddSingleton<UseCaseUpdateUser>();
             services.AddControllers();
             
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "My API", Version = "v1"}); });

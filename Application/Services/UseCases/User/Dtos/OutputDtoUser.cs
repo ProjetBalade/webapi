@@ -1,6 +1,6 @@
 ﻿namespace Services.User.Dtos
 {
-    public class InputDtoGetUser
+    public class OutputDtoUser
     {
         public int Id { get; set; }
         public string Name { get; set; }

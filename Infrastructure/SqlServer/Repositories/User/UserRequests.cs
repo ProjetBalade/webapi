@@ -19,6 +19,14 @@
         ";
 
         public static readonly string ReqDelete = $@"
-            DELETE FROM {TableName} WHERE {ColName} = @{ColName}";
+            DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
+
+        public static readonly string ReqUpdate = $@"
+            UPDATE {TableName} set {ColName} = @{ColName},
+            {colEmail} = @{colEmail}, {colPassword}=@{colPassword}
+            WHERE {ColId}= @{ColId}";
+
+        public static readonly string ReqGetById = $@"
+            SELECT * FROM {TableName} WHERE {ColId}=@{ColId}";
     }
 }
