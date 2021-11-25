@@ -9,7 +9,9 @@ using Application.UseCases.Ride;
 using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
 using Application.UseCases.Comment;
+using Application.UseCases.Message;
 using Infrastructure.SqlServer.Repositories.Comment;
+using Infrastructure.SqlServer.Repositories.Message;
 using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,13 +39,7 @@ namespace projBaladeAPI
         {
             
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
-
             
-
-           
-            //Add repos
-            services.AddSingleton<ICommentRepository, CommentRepository>();
-            services.AddSingleton<IDatabaseManager, DatabaseManager>();
 
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
@@ -51,12 +47,18 @@ namespace projBaladeAPI
             // Add repos
             services.AddSingleton<IRideRepository, RideRepository>();
             services.AddSingleton<IDogRepository, DogRepository>();
+            services.AddSingleton<ICommentRepository, CommentRepository>();
+            services.AddSingleton<IMessageRepository, MessageRepository>();
+
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
             
             // Add use cases
             services.AddSingleton<UseCaseGetAllRide>();
             services.AddSingleton<UseCaseCreateRide>();
             services.AddSingleton<UseCaseUpdateRide>();
+            services.AddSingleton<UseCaseDeleteRide>();
+            services.AddSingleton<UseCaseGetRideById>();
+            
             
             services.AddSingleton<UseCaseGetAllDog>();
             services.AddSingleton<UseCaseGetDog>();
@@ -66,7 +68,13 @@ namespace projBaladeAPI
             
             services.AddSingleton<UseCaseGetAllComments>();
             services.AddSingleton<UseCaseCreateComment>();
-
+            services.AddSingleton<UseCaseUpdateComment>();
+            
+            services.AddSingleton<UseCaseGetAllMessage>();
+            services.AddSingleton<UseCaseCreateMessage>();
+            services.AddSingleton<UseCaseDeleteMessage>();
+            services.AddSingleton<UseCaseGetMessageById>();
+            services.AddSingleton<UseCaseUpdateMessage>();
 
 
         }

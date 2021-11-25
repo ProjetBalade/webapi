@@ -28,6 +28,7 @@ namespace Infrastructure.SqlServer.Repositories.Ride
         public static readonly string ReqCreateRide = $"INSERT INTO {TableName}({ColNameRide}, {ColPlace}, {ColDescription}, {ColWebsite}, {ColDifficulty}, {ColSchedule}, {ColPhoto}, {ColScore}, {ColIdUser}) OUTPUT INSERTED.{ColId} VALUES(@{ColNameRide}, @{ColPlace}, @{ColDescription}, @{ColWebsite}, @{ColDifficulty}, @{ColSchedule}, @{ColPhoto}, @{ColScore}, @{ColIdUser})";
         
         public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColNameRide} = @{ColNameRide}, {ColPlace} = @{ColPlace}, {ColDescription} = @{ColDescription}, {ColWebsite} = @{ColWebsite}, {ColDifficulty} = @{ColDifficulty}, {ColSchedule} = @{ColSchedule}, {ColPhoto} = @{ColPhoto}, {ColScore} = @{ColScore}, {ColIdUser} = @{ColIdUser} WHERE {ColId} = @{ColId}";
+        public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
 
 
         public List<Domain.Ride> GetAll()
@@ -150,6 +151,36 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Score = ride.Score,
                 IdUser = ride.IdUser
             };
+        }
+
+        public void Delete(int id)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqDelete
+            };
+            command.Parameters.AddWithValue("@" + ColId, id);
+            command.ExecuteScalar();
+        }
+
+        public Domain.Ride GetById(int id)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetById
+            };
+            
+            command.Parameters.AddWithValue("@" + ColId, id);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader.Read() ? _rideFactory.CreateFromSqlDataReader(reader) : null;
         }
     }
 }

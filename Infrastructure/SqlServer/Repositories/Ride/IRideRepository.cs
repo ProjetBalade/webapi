@@ -8,6 +8,10 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             Domain.Ride Create(Domain.Ride ride);
 
             Domain.Ride Update(int id, Domain.Ride ride);
+            void Delete(int id);
+            
+            Domain.Ride GetById(int id);
+
 
     }
 }

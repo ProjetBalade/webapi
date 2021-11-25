@@ -16,9 +16,15 @@ namespace Application.UseCases.Comment
         
         public List<OutputDtoComment> Execute()
         {
-            var comments = _commentRepository.GetAll();
+            throw new System.NotImplementedException();
+        }
+
+        public List<OutputDtoComment> Execute(int id)
+        {
+            var comments = _commentRepository.GetAll(id);
 
             return Mapper.GetInstance().Map<List<OutputDtoComment>>(comments);
+            
         }
     }
 }

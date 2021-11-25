@@ -21,8 +21,10 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseGetAllRide _useCaseGetAllRide;
         private readonly UseCaseCreateRide _caseCreateRide;
         private readonly UseCaseUpdateRide _useCaseUpdateRide;
+        private readonly UseCaseDeleteRide _useCaseDeleteRide; 
+        private readonly UseCaseGetRideById _useCaseGetRideById; 
 
-        public RidesController(IDatabaseManager databaseManager, IHostEnvironment environment, IRideRepository rideRepository,UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide)
+        public RidesController(IDatabaseManager databaseManager, IHostEnvironment environment, IRideRepository rideRepository,UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide, UseCaseDeleteRide useCaseDeleteRide, UseCaseGetRideById useCaseGetRideById)
         {
             _databaseManager = databaseManager;
             _environment = environment;
@@ -30,6 +32,8 @@ namespace projBaladeAPI.Controllers
             _useCaseGetAllRide = useCaseGetAllRide;
             _caseCreateRide = useCaseCreateRide;
             _useCaseUpdateRide = updateRide;
+            _useCaseDeleteRide = useCaseDeleteRide;
+            _useCaseGetRideById = useCaseGetRideById;
 
         }
 
@@ -87,6 +91,26 @@ namespace projBaladeAPI.Controllers
                 return StatusCode(404);
             }
             
+        }
+        
+        [HttpDelete]
+        [Route("{id:int}")]
+        public ActionResult<bool> Delete(int id)
+        {
+            if (_useCaseDeleteRide.Execute(id))
+            {
+                return Ok();
+            }
+
+            return NotFound();
+            
+        }
+        
+        [HttpGet]
+        [Route("{id:int}")]
+        public ActionResult<OutPutDtoRide> GetById(int id)
+        {
+            return StatusCode(200,_useCaseGetRideById.Execute(id));
         }
     }
 }

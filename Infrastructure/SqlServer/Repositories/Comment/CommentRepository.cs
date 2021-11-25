@@ -18,20 +18,20 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             ColIdUser = "idUser",
             ColIdRide = "idRide";
         
-        public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
+        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {ColIdRide} = @{ColIdRide}";
 
         public static readonly string ReqCreateComment = $@"
             INSERT INTO {TableName}({ColContent}, {ColScore}, {ColImage},
             {ColDifficulty}, {ColIdUser}, {ColIdRide})
             OUTPUT INSERTED.{ColId}
             VALUES(@{ColContent}, @{ColScore}, @{ColImage}, @{ColDifficulty},
-            @{ColIdUser}, {ColIdRide})";
+            @{ColIdUser}, @{ColIdRide})";
 
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
 
         public static readonly string ReqUpdate =
             $"UPDATE {TableName}"
-            + $" SET {ColContent} = @{ColContent}, {ColScore}, {ColImage}, {ColDifficulty}, {ColIdUser}, {ColIdRide}"
+            + $" SET {ColContent} = @{ColContent}, {ColScore} = @{ColScore}, {ColImage} = @{ColImage}, {ColDifficulty} = @{ColDifficulty}, {ColIdUser} = @{ColIdUser}, {ColIdRide} = @{ColIdRide}"
             + $" WHERE {ColId} = @{ColId}";
 
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
@@ -39,7 +39,7 @@ namespace Infrastructure.SqlServer.Repositories.Comment
         private readonly CommentFactory _commentFactory = new CommentFactory();
 
         
-        public List<Domain.Comment> GetAll()
+        public List<Domain.Comment> GetAll(int idRide)
         {
             var comments = new List<Domain.Comment>();
 
@@ -52,8 +52,9 @@ namespace Infrastructure.SqlServer.Repositories.Comment
                 CommandText = ReqGetAll
             };
 
+            command.Parameters.AddWithValue("@" + ColIdRide,idRide);
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-
+            
             while (reader.Read())
             {
                 comments.Add(_commentFactory.CreateFromSqlDataReader(reader));
@@ -104,7 +105,7 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             return comment;
         }
 
-        public bool Update(int id, Domain.Comment comment)
+        public Domain.Comment Update(int id, Domain.Comment comment)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -122,8 +123,18 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             command.Parameters.AddWithValue("@" + ColImage, comment.Image);
             command.Parameters.AddWithValue("@" + ColIdUser, comment.IdUser);
             command.Parameters.AddWithValue("@" + ColIdRide, comment.IdRide);
+            command.ExecuteScalar();
 
-            return command.ExecuteNonQuery() > 0;
+            return new Domain.Comment
+            {
+                Id = id,
+                Content = comment.Content,
+                Score = comment.Score,
+                Difficulty = comment.Difficulty,
+                Image = comment.Image,
+                IdUser = comment.IdUser,
+                IdRide = comment.IdRide
+            };
         }
 
         public bool Delete(int id)

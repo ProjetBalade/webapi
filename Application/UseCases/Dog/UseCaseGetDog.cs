@@ -8,24 +8,24 @@ namespace Application.Services.UseCases.Dog
 {
     public class UseCaseGetDog : IQuery<OutputDtoDog>
     {
-    private readonly IDogRepository _dogRepository;
+        private readonly IDogRepository _dogRepository;
 
-    public UseCaseGetDog(IDogRepository dogRepository)
-    {
-        _dogRepository = dogRepository;
-    }
+        public UseCaseGetDog(IDogRepository dogRepository)
+        {
+            _dogRepository = dogRepository;
+        }
 
-    public OutputDtoDog Execute()
-    {
-        throw new System.NotImplementedException();
-    }
+        public OutputDtoDog Execute()
+        {
+            throw new System.NotImplementedException();
+        }
 
-    public OutputDtoDog Execute(int id)
-    {
-        var dog = _dogRepository.GetById(id);
+        public OutputDtoDog Execute(int id)
+        {
+            var dog = _dogRepository.GetById(id);
 
-        return Mapper.GetInstance().Map<OutputDtoDog>(dog);
-    }
+            return Mapper.GetInstance().Map<OutputDtoDog>(dog);
+        }
     }
 
 }

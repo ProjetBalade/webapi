@@ -11,9 +11,9 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             {
                 Id = reader.GetInt32(reader.GetOrdinal(CommentRepository.ColId)),
                 Content = reader.GetString(reader.GetOrdinal(CommentRepository.ColContent)),
-                Score = reader.GetInt32(reader.GetOrdinal(CommentRepository.ColScore)),
+                Score = reader.GetByte(reader.GetOrdinal(CommentRepository.ColScore)),
                 Image = reader.GetString(reader.GetOrdinal(CommentRepository.ColImage)),
-                Difficulty = reader.GetInt32(reader.GetOrdinal(CommentRepository.ColDifficulty)),
+                Difficulty = reader.GetByte(reader.GetOrdinal(CommentRepository.ColDifficulty)),
                 IdUser = reader.GetInt32(reader.GetOrdinal(CommentRepository.ColIdUser)),
                 IdRide = reader.GetInt32(reader.GetOrdinal(CommentRepository.ColIdRide))
 

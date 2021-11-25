@@ -68,20 +68,6 @@ namespace projBaladeAPI.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
-        /*public ActionResult<OutputDtoDog> Update(int id, [FromBody] InputDtoDog dog)
-        {
-            try
-            {
-                return StatusCode(200,_useCaseUpdateDog.Execute(id, dog));
-            }
-            catch (DogNotFoundException e)
-            {
-                /*Console.WriteLine(e);
-                throw;#1#
-                return StatusCode(404);
-            }
-           
-        }*/
         public  ActionResult<OutputDtoDog> Update(int id, [FromBody] InputDtoDog dog)
         {
             return StatusCode(200, _useCaseUpdateDog.Execute(id, dog));
