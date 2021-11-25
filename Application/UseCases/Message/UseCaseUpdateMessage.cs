@@ -11,6 +11,7 @@ namespace Application.UseCases.Message
         public UseCaseUpdateMessage(IMessageRepository messageRepository)
         {
             _messageRepository = messageRepository;
+            
         }
 
         public OutputDtoMessage Execute(int id, InputDtoMessage dto)
