@@ -10,8 +10,10 @@ using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
 using Application.UseCases.Comment;
 using Application.UseCases.Message;
+using Application.UseCases.User.Dtos;
 using Infrastructure.SqlServer.Repositories.Comment;
 using Infrastructure.SqlServer.Repositories.Message;
+using Infrastructure.SqlServer.Repositories.User;
 using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +51,8 @@ namespace projBaladeAPI
             services.AddSingleton<IDogRepository, DogRepository>();
             services.AddSingleton<ICommentRepository, CommentRepository>();
             services.AddSingleton<IMessageRepository, MessageRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
+            
 
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
             
@@ -75,6 +79,13 @@ namespace projBaladeAPI
             services.AddSingleton<UseCaseDeleteMessage>();
             services.AddSingleton<UseCaseGetMessageById>();
             services.AddSingleton<UseCaseUpdateMessage>();
+
+            services.AddSingleton<UseCaseGetAllUser>();
+            services.AddSingleton<UseCaseCreateUser>();
+            services.AddSingleton<UseCaseDeleteUser>();
+            services.AddSingleton<UseCaseGetUser>();
+            services.AddSingleton<UseCaseUpdateUser>();
+
 
 
         }
