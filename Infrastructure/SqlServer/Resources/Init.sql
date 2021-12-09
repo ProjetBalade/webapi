@@ -52,6 +52,7 @@ idRide int foreign key references ride(id)
 
 create table message
 (
+id int identity primary key,
 content varchar(1000) not null,
 idRecipient int foreign key references users(id),
 idSender int foreign key references users(id),
