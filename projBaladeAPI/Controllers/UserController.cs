@@ -35,8 +35,7 @@ namespace projBaladeAPI.Controllers
         }
         
         [HttpGet]
-        [Route("getAll")]
-        public ActionResult<List<OutPutDtoUser>> GetAll()
+        public List<OutPutDtoUser> GetAll()
         {
 
             return _useCaseGetAllUser.Execute();
@@ -72,7 +71,7 @@ namespace projBaladeAPI.Controllers
             {
                 return StatusCode(200,_useCaseGetUser.Execute(id));
             }
-            catch (UserNotFoundException e)
+            catch (UserNotFoundException)
             {
                 
                 return StatusCode(404);
@@ -88,7 +87,7 @@ namespace projBaladeAPI.Controllers
             {
                 return StatusCode(200, _useCaseUpdateUser.Execute(id, user));
             }
-            catch (UserNotFoundException e)
+            catch (UserNotFoundException)
             {
                 return StatusCode(404);
             }

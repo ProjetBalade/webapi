@@ -50,7 +50,7 @@ namespace projBaladeAPI.Controllers
             {
                 return StatusCode(200,_useCaseGetDog.Execute(id));
             }
-            catch (DogNotFoundException e)
+            catch (DogNotFoundException)
             {
                 /*Console.WriteLine(e);
                 throw;*/

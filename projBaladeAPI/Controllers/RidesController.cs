@@ -86,7 +86,7 @@ namespace projBaladeAPI.Controllers
             {
                 return StatusCode(200, _useCaseUpdateRide.Execute(id, ride));
             }
-            catch (RideNotFoundException e)
+            catch (RideNotFoundException)
             {
                 return StatusCode(404);
             }
