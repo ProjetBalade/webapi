@@ -4,6 +4,9 @@ using Application.UseCases.User.Dtos.Dtos;
 using Infrastructure.SqlServer.Repositories.User;
 using Infrastructure.SqlServer.Repositories.User.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using projBaladeAPI.Helpers;
+using projBaladeAPI.Models;
+using projBaladeAPI.Services;
 
 namespace projBaladeAPI.Controllers
 {
@@ -17,6 +20,7 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseGetUser _useCaseGetUser;
         private readonly UseCaseUpdateUser _useCaseUpdateUser;
         private IUserRepository _userRepository;
+        private IUserService _userService;
         
         public UserController(
             UseCaseGetAllUser useCaseGetAllUser,
@@ -24,7 +28,8 @@ namespace projBaladeAPI.Controllers
             UseCaseDeleteUser useCaseDeleteUser,
             UseCaseGetUser useCaseGetUser,
             UseCaseUpdateUser useCaseUpdateUser,
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            IUserService userService)
         {
             _useCaseGetAllUser = useCaseGetAllUser;
             _useCaseCreateUser = useCaseCreateUser;
@@ -32,6 +37,7 @@ namespace projBaladeAPI.Controllers
             _useCaseGetUser = useCaseGetUser;
             _useCaseUpdateUser = useCaseUpdateUser;
             _userRepository = userRepository;
+            _userService = userService;
         }
         
         [HttpGet]
@@ -93,6 +99,27 @@ namespace projBaladeAPI.Controllers
                 return StatusCode(404);
             }
         }
+
+        [HttpPost("Authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
+        {
+            var response = _userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
+        }
+        
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetAllLoged()
+        {
+            var users = _userService.GetAllLoged();
+            return Ok(users);
+        }
+        
+        
         
     }
 }
