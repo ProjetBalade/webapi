@@ -20,7 +20,7 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseGetUser _useCaseGetUser;
         private readonly UseCaseUpdateUser _useCaseUpdateUser;
         private IUserRepository _userRepository;
-        private IUserService _userService;
+      //  private IUserService _userService;
         
         public UserController(
             UseCaseGetAllUser useCaseGetAllUser,
@@ -28,8 +28,8 @@ namespace projBaladeAPI.Controllers
             UseCaseDeleteUser useCaseDeleteUser,
             UseCaseGetUser useCaseGetUser,
             UseCaseUpdateUser useCaseUpdateUser,
-            IUserRepository userRepository,
-            IUserService userService)
+            IUserRepository userRepository
+           /* IUserService userService*/)
         {
             _useCaseGetAllUser = useCaseGetAllUser;
             _useCaseCreateUser = useCaseCreateUser;
@@ -37,7 +37,7 @@ namespace projBaladeAPI.Controllers
             _useCaseGetUser = useCaseGetUser;
             _useCaseUpdateUser = useCaseUpdateUser;
             _userRepository = userRepository;
-            _userService = userService;
+            //_userService = userService;
         }
         
         [HttpGet]
@@ -99,7 +99,7 @@ namespace projBaladeAPI.Controllers
                 return StatusCode(404);
             }
         }
-
+/*
         [HttpPost("Authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
@@ -119,7 +119,7 @@ namespace projBaladeAPI.Controllers
             return Ok(users);
         }
         
-        
+        */
         
     }
 }

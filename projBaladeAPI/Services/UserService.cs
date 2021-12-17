@@ -16,7 +16,7 @@ namespace projBaladeAPI.Services
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAllLoged();
-        User GetById(int id);
+        User GetById2(int id);
     }
 
     public class UserService : IUserService
@@ -42,7 +42,7 @@ namespace projBaladeAPI.Services
             if (user == null) return null;
 
             // authentication successful so generate jwt token
-            var token = generateJwtToken(user);
+            var token = GenerateJwtToken(user);
 
             return new AuthenticateResponse(user, token);
         }
@@ -52,14 +52,14 @@ namespace projBaladeAPI.Services
             return _users;
         }
 
-        public User GetById(int id)
+        public User GetById2(int id)
         {
             return _users.FirstOrDefault(x => x.Id == id);
         }
 
         // helper methods
 
-        private string generateJwtToken(User user)
+        private string GenerateJwtToken(User user)
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();
