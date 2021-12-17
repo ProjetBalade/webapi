@@ -13,7 +13,6 @@ namespace Infrastructure.SqlServer.Repositories.Comment
         public const string ColId = "id",
             ColContent = "content",
             ColScore = "score",
-            ColImage = "image",
             ColDifficulty = "difficulty",
             ColIdUser = "idUser",
             ColIdRide = "idRide";
@@ -21,17 +20,17 @@ namespace Infrastructure.SqlServer.Repositories.Comment
         public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {ColIdRide} = @{ColIdRide}";
 
         public static readonly string ReqCreateComment = $@"
-            INSERT INTO {TableName}({ColContent}, {ColScore}, {ColImage},
+            INSERT INTO {TableName}({ColContent}, {ColScore}, 
             {ColDifficulty}, {ColIdUser}, {ColIdRide})
             OUTPUT INSERTED.{ColId}
-            VALUES(@{ColContent}, @{ColScore}, @{ColImage}, @{ColDifficulty},
+            VALUES(@{ColContent}, @{ColScore}, , @{ColDifficulty},
             @{ColIdUser}, @{ColIdRide})";
 
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
 
         public static readonly string ReqUpdate =
             $"UPDATE {TableName}"
-            + $" SET {ColContent} = @{ColContent}, {ColScore} = @{ColScore}, {ColImage} = @{ColImage}, {ColDifficulty} = @{ColDifficulty}, {ColIdUser} = @{ColIdUser}, {ColIdRide} = @{ColIdRide}"
+            + $" SET {ColContent} = @{ColContent}, {ColScore} = @{ColScore}, {ColDifficulty} = @{ColDifficulty}, {ColIdUser} = @{ColIdUser}, {ColIdRide} = @{ColIdRide}"
             + $" WHERE {ColId} = @{ColId}";
 
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
@@ -95,7 +94,6 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             
             command.Parameters.AddWithValue("@" + ColContent, comment.Content);
             command.Parameters.AddWithValue("@" + ColScore, comment.Score);
-            command.Parameters.AddWithValue("@" + ColImage, comment.Image);
             command.Parameters.AddWithValue("@" + ColDifficulty, comment.Difficulty);
             command.Parameters.AddWithValue("@" + ColIdUser, comment.IdUser);
             command.Parameters.AddWithValue("@" + ColIdRide, comment.IdRide);
@@ -120,7 +118,6 @@ namespace Infrastructure.SqlServer.Repositories.Comment
             command.Parameters.AddWithValue("@" + ColContent, comment.Content);
             command.Parameters.AddWithValue("@" + ColScore, comment.Score);
             command.Parameters.AddWithValue("@" + ColDifficulty, comment.Difficulty);
-            command.Parameters.AddWithValue("@" + ColImage, comment.Image);
             command.Parameters.AddWithValue("@" + ColIdUser, comment.IdUser);
             command.Parameters.AddWithValue("@" + ColIdRide, comment.IdRide);
             command.ExecuteScalar();
@@ -131,7 +128,6 @@ namespace Infrastructure.SqlServer.Repositories.Comment
                 Content = comment.Content,
                 Score = comment.Score,
                 Difficulty = comment.Difficulty,
-                Image = comment.Image,
                 IdUser = comment.IdUser,
                 IdRide = comment.IdRide
             };

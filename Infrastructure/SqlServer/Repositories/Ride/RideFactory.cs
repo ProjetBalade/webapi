@@ -16,7 +16,6 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Website = reader.GetString(reader.GetOrdinal(RideRepository.ColWebsite)),
                 Difficulty = reader.GetByte(reader.GetOrdinal(RideRepository.ColDifficulty)),
                 Schedule = reader.GetString(reader.GetOrdinal(RideRepository.ColSchedule)),
-                Photo = reader.GetString(reader.GetOrdinal(RideRepository.ColPhoto)),
                 Score = reader.GetByte(reader.GetOrdinal(RideRepository.ColScore)),
                 IdUser = reader.GetInt32(reader.GetOrdinal(RideRepository.ColIdUser)),
                 

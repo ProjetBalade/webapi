@@ -10,5 +10,5 @@ values('admin', 'admin');
 insert into ride(nameRide, place, difficulty, idUser)
 values('testBalade1', 'Mons', 2, 1), ('testBalade2', 'Bruxelles', 5, 2);
 
-insert into comment(content, score, image, difficulty, idUser, idRide)
-values('nice', 3, 'image', 4, 1, 1);
+insert into comment(content, score, difficulty, idUser, idRide)
+values('nice', 3, 4, 1, 1);

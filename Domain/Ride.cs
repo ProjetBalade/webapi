@@ -11,7 +11,6 @@ namespace Domain
         public String Website { get; set; }
         public Byte Difficulty { get; set; }
         public String Schedule { get; set; }
-        public String Photo { get; set; }
         public Byte Score { get; set; }
         public int IdUser { get; set; }
 

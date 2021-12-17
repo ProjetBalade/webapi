@@ -34,7 +34,6 @@ description varchar(1000),
 website varchar(255),
 difficulty tinyint not null,
 schedule varchar(255),
-photo varchar(255),
 score tinyint,
 idUser int foreign key references users(id)
 );
@@ -44,7 +43,6 @@ create table comment
 id int identity primary key,
 content varchar(1000) not null,
 score tinyint,
-image varchar(255),
 difficulty tinyint not null,
 idUser int foreign key references users(id),
 idRide int foreign key references ride(id)
