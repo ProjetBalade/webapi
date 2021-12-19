@@ -8,7 +8,6 @@
 
         public byte Score { get; set; }
         
-        public string Image { get; set; }
 
         public byte Difficulty { get; set; }
 

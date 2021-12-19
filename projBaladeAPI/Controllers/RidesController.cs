@@ -74,7 +74,6 @@ namespace projBaladeAPI.Controllers
         [HttpPost]
         public ActionResult<OutPutDtoRide> Create([FromBody] InputDtoRide ride)
         {
-            //var validationResult = _userValidator.validateCreateUser(user);
             return StatusCode(201, _caseCreateRide.Execute(ride));
         }
         
