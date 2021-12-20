@@ -1,13 +1,13 @@
+using System.Collections.Generic;
 using Application.UseCases.Ride.Dtos;
 using Application.UseCases.Utils;
 using Infrastructure.SqlServer.Repositories.Ride;
 
 namespace Application.UseCases.Ride
 {
-    public class UseCaseGetAllRide : IQuery<OutPutDtoRide>
+    public class UseCaseGetAllRide : IQuery<List<OutPutDtoRide>>
     {
         private readonly IRideRepository _rideRepository;
-        private IQuery<OutPutDtoRide> _queryImplementation;
 
         public UseCaseGetAllRide(IRideRepository rideRepository)
         {
@@ -15,14 +15,14 @@ namespace Application.UseCases.Ride
         }
         
 
-        public OutPutDtoRide Execute()
+        public List<OutPutDtoRide> Execute()
         {
             var rideFromDb = _rideRepository.GetAll();
 
-            return Mapper.GetInstance().Map<OutPutDtoRide>(rideFromDb);
+            return Mapper.GetInstance().Map<List<OutPutDtoRide>>(rideFromDb);
         }
 
-        public OutPutDtoRide Execute(int id)
+        public List<OutPutDtoRide> Execute(int id)
         {
             throw new System.NotImplementedException();
         }

@@ -18,6 +18,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Schedule = reader.GetString(reader.GetOrdinal(RideRepository.ColSchedule)),
                 Score = reader.GetByte(reader.GetOrdinal(RideRepository.ColScore)),
                 IdUser = reader.GetInt32(reader.GetOrdinal(RideRepository.ColIdUser)),
+                Longitude = reader.GetDouble(reader.GetOrdinal(RideRepository.ColLongitude)),
+                Latitude = reader.GetDouble(reader.GetOrdinal(RideRepository.ColLatitude))
                 
                 
             };

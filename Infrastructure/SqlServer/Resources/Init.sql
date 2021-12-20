@@ -24,18 +24,19 @@ create table admin
 nameAdmin varchar(255) not null,
 password varchar(255) not null
 );
-
 create table ride
 (
-id int identity primary key,
-nameRide varchar(255) not null,
-place varchar(255) not null,
-description varchar(1000),
-website varchar(255),
-difficulty tinyint not null,
-schedule varchar(255),
-score tinyint,
-idUser int foreign key references users(id)
+    id int identity primary key,
+    nameRide varchar(255) not null,
+    place varchar(255) not null,
+    description varchar(1000),
+    website varchar(255),
+    difficulty tinyint not null,
+    schedule varchar(255),
+    score tinyint,
+    double precision latitude,
+    double precision longitude,
+    idUser int foreign key references users(id)
 );
 
 create table comment

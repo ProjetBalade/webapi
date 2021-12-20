@@ -6,7 +6,6 @@ using Infrastructure.SqlServer.Repositories.User.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using projBaladeAPI.Helpers;
 using projBaladeAPI.Models;
-using projBaladeAPI.Services;
 
 namespace projBaladeAPI.Controllers
 {
@@ -19,25 +18,21 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseDeleteUser _useCaseDeleteUser;
         private readonly UseCaseGetUser _useCaseGetUser;
         private readonly UseCaseUpdateUser _useCaseUpdateUser;
-        private IUserRepository _userRepository;
-      //  private IUserService _userService;
+        private readonly UseCaseAuthenticateUser _useCaseAuthenticateUser;
         
         public UserController(
             UseCaseGetAllUser useCaseGetAllUser,
             UseCaseCreateUser useCaseCreateUser,
             UseCaseDeleteUser useCaseDeleteUser,
             UseCaseGetUser useCaseGetUser,
-            UseCaseUpdateUser useCaseUpdateUser,
-            IUserRepository userRepository
-           /* IUserService userService*/)
+            UseCaseUpdateUser useCaseUpdateUser, UseCaseAuthenticateUser authenticateUser)
         {
             _useCaseGetAllUser = useCaseGetAllUser;
             _useCaseCreateUser = useCaseCreateUser;
             _useCaseDeleteUser = useCaseDeleteUser;
             _useCaseGetUser = useCaseGetUser;
             _useCaseUpdateUser = useCaseUpdateUser;
-            _userRepository = userRepository;
-            //_userService = userService;
+            _useCaseAuthenticateUser = authenticateUser;
         }
         
         [HttpGet]
@@ -62,7 +57,7 @@ namespace projBaladeAPI.Controllers
         [ProducesResponseType(201)]
         public ActionResult Delete(int id)
         {
-            if (_userRepository.Delete(id))
+            if (_useCaseDeleteUser.Execute(id))
             {
                 return Ok();
             }
@@ -99,11 +94,11 @@ namespace projBaladeAPI.Controllers
                 return StatusCode(404);
             }
         }
-/*
+
         [HttpPost("Authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var response = _userService.Authenticate(model);
+            var response = _useCaseAuthenticateUser.Execute(model.Name, model.Password);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
@@ -111,15 +106,15 @@ namespace projBaladeAPI.Controllers
             return Ok(response);
         }
         
-        [Authorize]
-        [HttpGet]
-        public IActionResult GetAllLoged()
-        {
-            var users = _userService.GetAllLoged();
-            return Ok(users);
-        }
+        // [Authorize]
+        // [HttpGet]
+        // public IActionResult GetAllLoged()
+        // {
+        //     var users = _userService.GetAllLoged();
+        //     return Ok(users);
+        // }
         
-        */
+        
         
     }
 }

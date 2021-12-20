@@ -15,20 +15,16 @@ namespace projBaladeAPI.Controllers
     [Route("api/rides")]
     public class RidesController: ControllerBase
     {
-        private readonly IHostEnvironment _environment;
-        private readonly IDatabaseManager _databaseManager;
-        private readonly IRideRepository _rideRepository;
+       
         private readonly UseCaseGetAllRide _useCaseGetAllRide;
         private readonly UseCaseCreateRide _caseCreateRide;
         private readonly UseCaseUpdateRide _useCaseUpdateRide;
         private readonly UseCaseDeleteRide _useCaseDeleteRide; 
         private readonly UseCaseGetRideById _useCaseGetRideById; 
 
-        public RidesController(IDatabaseManager databaseManager, IHostEnvironment environment, IRideRepository rideRepository,UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide, UseCaseDeleteRide useCaseDeleteRide, UseCaseGetRideById useCaseGetRideById)
+        public RidesController(UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide, UseCaseDeleteRide useCaseDeleteRide, UseCaseGetRideById useCaseGetRideById)
         {
-            _databaseManager = databaseManager;
-            _environment = environment;
-            _rideRepository = rideRepository;
+         
             _useCaseGetAllRide = useCaseGetAllRide;
             _caseCreateRide = useCaseCreateRide;
             _useCaseUpdateRide = updateRide;
@@ -37,39 +33,16 @@ namespace projBaladeAPI.Controllers
 
         }
 
-        [HttpPost]
-        [Route("init")]
-        public IActionResult CreateDatabaseAndTables()
+       
+     
+        
+        
+        [HttpGet]
+        public ActionResult<List<OutPutDtoRide>> GetAll()
         {
-            if (_environment.IsProduction())
-                return BadRequest("Only in dev");
-            
-            _databaseManager.CreateDatabaseAndTables();
-            return Ok("Database and tables created successfully");
-        }
-
-        [HttpPost]
-        [Route("data")]
-        public IActionResult FillTables()
-        {
-            if (_environment.IsProduction())
-                return BadRequest("Only in dev");
-            
-            _databaseManager.FillTables();
-            return Ok("Tables have been filled");
+            return _useCaseGetAllRide.Execute();
         }
         
-         [HttpGet]
-         public List<Ride> GetAll()
-         {
-             return _rideRepository.GetAll();
-         }
-        // [HttpGet]
-        // public ActionResult<OutPutDtoRider> GetAll()
-        // {
-        //     return _useCaseGetAllRide.Execute();
-        // }
-        //
         
         [HttpPost]
         public ActionResult<OutPutDtoRide> Create([FromBody] InputDtoRide ride)

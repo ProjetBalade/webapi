@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace projBaladeAPI.Helpers
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)
