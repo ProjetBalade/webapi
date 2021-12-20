@@ -8,6 +8,7 @@ using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using projBaladeAPI.Helpers;
 
 namespace projBaladeAPI.Controllers
 {
@@ -36,10 +37,11 @@ namespace projBaladeAPI.Controllers
        
      
         
-        
+        [Authorize]
         [HttpGet]
         public ActionResult<List<OutPutDtoRide>> GetAll()
         {
+           
             return _useCaseGetAllRide.Execute();
         }
         

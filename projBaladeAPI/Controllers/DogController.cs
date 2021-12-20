@@ -39,7 +39,13 @@ namespace projBaladeAPI.Controllers
         [Route("getall")]
         public ActionResult<List<OutputDtoDog>> GetAll()
         {
-            return _useCaseGetAllDog.Execute();
+            if (HttpContext.Items["User"] is User user)
+            {
+                int userId = user.Id;
+                return _useCaseGetAllDog.Execute(userId);
+            }
+
+            return Unauthorized();
         }
         
         [HttpGet]
