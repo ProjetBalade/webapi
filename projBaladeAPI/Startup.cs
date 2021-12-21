@@ -24,6 +24,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using projBaladeAPI.Helpers;
 
 namespace projBaladeAPI
 {
@@ -50,9 +51,11 @@ namespace projBaladeAPI
                 });
             });
             
+            // configure strongly typed settings object
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            
             services.AddSingleton<IDatabaseManager, DatabaseManager>();
             
-
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "WebApi", Version = "v1"}); });
 
@@ -95,7 +98,7 @@ namespace projBaladeAPI
             services.AddSingleton<UseCaseDeleteUser>();
             services.AddSingleton<UseCaseGetUser>();
             services.AddSingleton<UseCaseUpdateUser>();
-
+            services.AddSingleton<UseCaseAuthenticateUser>();
 
 
         }
@@ -103,24 +106,25 @@ namespace projBaladeAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1");
-            });
             
-            app.UseSwagger();
-
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
-
-            app.UseHttpsRedirection();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
+            }
+            else
+            {
+                app.UseHttpsRedirection();
+            }
             
             app.UseCors(MyOrigins);
-            
             app.UseRouting();
 
             app.UseAuthorization();
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtMiddleware>();
+
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

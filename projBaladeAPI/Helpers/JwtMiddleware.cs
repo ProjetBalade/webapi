@@ -3,10 +3,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.SqlServer.Repositories.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using projBaladeAPI.Services;
 
 namespace projBaladeAPI.Helpers
 {
@@ -21,7 +21,7 @@ namespace projBaladeAPI.Helpers
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUserService userService)
+        public async Task Invoke(HttpContext context, IUserRepository userService)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
@@ -31,7 +31,7 @@ namespace projBaladeAPI.Helpers
             await _next(context);
         }
 
-        private void attachUserToContext(HttpContext context, IUserService userService, string token)
+        private void attachUserToContext(HttpContext context, IUserRepository userService, string token)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace projBaladeAPI.Helpers
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach user to context on successful jwt validation
-                context.Items["User"] = userService.GetById2(userId);
+                context.Items["User"] = userService.GetById(userId);
             }
             catch
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Application.Services.UseCases.Dog.DtosDog;
 using Application.Services.UseCases.Utils;
@@ -17,14 +18,15 @@ namespace Application.Services.UseCases.Dog
 
         public List<OutputDtoDog> Execute()
         {
-            var dogs = _dogRepository.GetAll();
-
-            return Mapper.GetInstance().Map<List<OutputDtoDog>>(dogs);
+            throw new System.NotImplementedException();
+            
         }
 
         public List<OutputDtoDog> Execute(int id)
         {
-            throw new System.NotImplementedException();
+            var dogs = _dogRepository.GetAll(id);
+
+            return Mapper.GetInstance().Map<List<OutputDtoDog>>(dogs);
         }
     }
 

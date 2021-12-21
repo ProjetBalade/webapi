@@ -19,6 +19,8 @@ namespace Infrastructure.SqlServer.Repositories.User
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqUpdate = $"UPDATE {TableName} set {ColName} = @{ColName},{ColEmail} = @{ColEmail}, {ColPassword}=@{ColPassword} WHERE {ColId}= @{ColId}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId}=@{ColId}";
+        public static readonly string ReqGetByNameAndPassword = $"SELECT * FROM {TableName} WHERE {ColName}=@{ColName} and {ColPassword}=@{ColPassword}";
+        
         private readonly UserFactory _userFactory = new UserFactory();
 
         public List<Domain.User> GetAll()
@@ -136,6 +138,23 @@ namespace Infrastructure.SqlServer.Repositories.User
                 Email = user.Email,
                 Password = user.Password
             };
+        }
+
+        public Domain.User FindByNameAndPassword(string name, string password)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetByNameAndPassword
+            };
+
+            command.Parameters.AddWithValue("@" + ColName, name);
+            command.Parameters.AddWithValue("@" + ColPassword, password);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
         }
     }
 }

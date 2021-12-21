@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace projBaladeAPI.Services
 {
  public interface IUserService
     {
+        
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAllLoged();
         User GetById2(int id);
@@ -22,10 +23,11 @@ namespace projBaladeAPI.Services
     public class UserService : IUserService
     {
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
+        /*private List<User> _users = new List<User>
         {
-            new User { Id = 1, Name = "Test", Email = "User", Password = "test"}
-        };
+            
+            new User { Id = 1, Name = "test", Email = "User", Password = "test"}
+        };#1#
 
         private readonly AppSettings _appSettings;
 
@@ -49,12 +51,12 @@ namespace projBaladeAPI.Services
 
         public IEnumerable<User> GetAllLoged()
         {
-            return _users;
+            //return _users;
         }
 
         public User GetById2(int id)
         {
-            return _users.FirstOrDefault(x => x.Id == id);
+            //return _users.FirstOrDefault(x => x.Id == id);
         }
 
         // helper methods
@@ -74,4 +76,4 @@ namespace projBaladeAPI.Services
             return tokenHandler.WriteToken(token);
         }
     }
-}
+}*/

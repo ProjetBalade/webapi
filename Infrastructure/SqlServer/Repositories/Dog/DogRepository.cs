@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Http;
 using NotImplementedException = System.NotImplementedException;
 
 namespace Infrastructure.SqlServer.Repositories.Dog
@@ -15,20 +16,23 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             CoLDateBirth = "dateOfBirth",
             CoLIdUser = "idUser";
 
-        public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
+        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {CoLIdUser} = @{CoLIdUser}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {CoLId} = @{CoLId}";
         public static readonly string ReqCreate = $"INSERT INTO {TableName}({CoLNameDog}, {CoLRaceDog}, {CoLDateBirth}, {CoLIdUser}) OUTPUT INSERTED.{CoLId} VALUES(@{CoLNameDog},@{CoLRaceDog},@{CoLDateBirth},@{CoLIdUser})";
         public static readonly string ReqUpdate = $"UPDATE {TableName} SET {CoLNameDog} = @{CoLNameDog}, {CoLRaceDog} = @{CoLRaceDog}, {CoLDateBirth} = @{CoLDateBirth},  {CoLIdUser} = @{CoLIdUser}  WHERE {CoLId} = @{CoLId}";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {CoLId} = @{CoLId}";
        
         private readonly DogFactory _dogFactory = new DogFactory();
-        public List<Domain.Dog> GetAll()
+        public List<Domain.Dog> GetAll(int idUser)
         {
             var dogs = new List<Domain.Dog>();
 
             using var connection = Database.GetConnection();
             connection.Open();
+            
+            
             var command = new SqlCommand {Connection = connection, CommandText = ReqGetAll};
+            command.Parameters.AddWithValue("@" + CoLIdUser, idUser);
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
 
             while (reader.Read())

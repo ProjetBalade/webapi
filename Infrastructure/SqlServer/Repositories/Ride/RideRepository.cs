@@ -20,13 +20,15 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             ColDifficulty = "difficulty",
             ColSchedule = "schedule",
             ColScore = "score",
-            ColIdUser = "idUser";
+            ColIdUser = "idUser",
+            ColLongitude = "longitude",
+            ColLatitude = "latitude";
 
         public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
-        public static readonly string ReqCreateRide = $"INSERT INTO {TableName}({ColNameRide}, {ColPlace}, {ColDescription}, {ColWebsite}, {ColDifficulty}, {ColSchedule}, {ColScore}, {ColIdUser}) OUTPUT INSERTED.{ColId} VALUES(@{ColNameRide}, @{ColPlace}, @{ColDescription}, @{ColWebsite}, @{ColDifficulty}, @{ColSchedule}, @{ColScore}, @{ColIdUser})";
+        public static readonly string ReqCreateRide = $"INSERT INTO {TableName}({ColNameRide}, {ColPlace}, {ColDescription}, {ColWebsite}, {ColDifficulty}, {ColSchedule}, {ColScore}, {ColIdUser}, {ColLatitude}, {ColLongitude}) OUTPUT INSERTED.{ColId} VALUES(@{ColNameRide}, @{ColPlace}, @{ColDescription}, @{ColWebsite}, @{ColDifficulty}, @{ColSchedule}, @{ColScore}, @{ColIdUser}, @{ColLatitude}, @{ColLongitude})";
         
-        public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColNameRide} = @{ColNameRide}, {ColPlace} = @{ColPlace}, {ColDescription} = @{ColDescription}, {ColWebsite} = @{ColWebsite}, {ColDifficulty} = @{ColDifficulty}, {ColSchedule} = @{ColSchedule}, {ColScore} = @{ColScore}, {ColIdUser} = @{ColIdUser} WHERE {ColId} = @{ColId}";
+        public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColNameRide} = @{ColNameRide}, {ColPlace} = @{ColPlace}, {ColDescription} = @{ColDescription}, {ColWebsite} = @{ColWebsite}, {ColDifficulty} = @{ColDifficulty}, {ColSchedule} = @{ColSchedule}, {ColScore} = @{ColScore}, {ColIdUser} = @{ColIdUser}, {ColLatitude} = @{ColLatitude}, {ColLongitude} = @{ColLongitude} WHERE {ColId} = @{ColId}";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
 
 
@@ -73,6 +75,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             command.Parameters.AddWithValue("@" + ColSchedule,ride.Schedule);
             command.Parameters.AddWithValue("@" + ColScore,ride.Score);
             command.Parameters.AddWithValue("@" + ColIdUser,ride.IdUser);
+            command.Parameters.AddWithValue("@" + ColLatitude,ride.Latitude);
+            command.Parameters.AddWithValue("@" + ColLongitude,ride.Longitude);
             return new Domain.Ride
             {
                 Id = (int) command.ExecuteScalar(),
@@ -83,7 +87,9 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Difficulty=ride.Difficulty,
                 Schedule = ride.Schedule,
                 Score = ride.Score,
-                IdUser = ride.IdUser
+                IdUser = ride.IdUser,
+                Latitude = ride.Latitude,
+                Longitude = ride.Longitude
             };
         }
 
@@ -132,6 +138,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             command.Parameters.AddWithValue("@" + ColSchedule, ride.Schedule);
             command.Parameters.AddWithValue("@" + ColScore, ride.Score);
             command.Parameters.AddWithValue("@" + ColIdUser, ride.IdUser);
+            command.Parameters.AddWithValue("@" + ColLatitude, ride.Latitude);
+            command.Parameters.AddWithValue("@" + ColLongitude, ride.Longitude);
             command.ExecuteScalar();
             
             return new Domain.Ride
@@ -144,7 +152,9 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Difficulty=ride.Difficulty,
                 Schedule = ride.Schedule,
                 Score = ride.Score,
-                IdUser = ride.IdUser
+                IdUser = ride.IdUser,
+                Latitude = ride.Latitude,
+                Longitude = ride.Longitude
             };
         }
 

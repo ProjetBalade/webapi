@@ -11,6 +11,8 @@ namespace Infrastructure.SqlServer.Repositories.User
 
         Domain.User GetById(int id);
         Domain.User Update(int id, Domain.User user);
-        
+
+        Domain.User FindByNameAndPassword(string name, string password);
+
     }
 }

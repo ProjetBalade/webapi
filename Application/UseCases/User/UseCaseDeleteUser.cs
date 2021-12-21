@@ -5,7 +5,7 @@ using Infrastructure.SqlServer.Repositories.User;
 
 namespace Application.UseCases.User.Dtos
 {
-    public class UseCaseDeleteUser : IDelete<OutPutDtoUser>
+    public class UseCaseDeleteUser : IDelete<bool>
     {
         private readonly IUserRepository _userRepository;
 
@@ -13,11 +13,9 @@ namespace Application.UseCases.User.Dtos
         {
             _userRepository = userRepository;
         }
-        public OutPutDtoUser Execute(int id)
+        public bool Execute(int id)
         {
-            var user = _userRepository.Delete(id);
-
-            return Mapper.GetInstance().Map<OutPutDtoUser>(user);
+            return _userRepository.Delete(id);
         }
     }
 }
