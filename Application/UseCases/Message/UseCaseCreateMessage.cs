@@ -21,5 +21,10 @@ namespace Application.UseCases.Message
 
             return Mapper.GetInstance().Map<OutputDtoMessage>(messageFromDb); 
         }
+
+        public OutputDtoMessage Execute(InputDtoMessage dto, int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -7,8 +7,6 @@ values ('dogUser1', 'border',  '2017-11-20' , 1), ('dogUser2', 'shiba', '2015-11
 insert into admin(nameAdmin, password)
 values('admin', 'admin');
 
-insert into ride(nameRide, place, difficulty, idUser)
-values('testBalade1', 'Mons', 2, 1), ('testBalade2', 'Bruxelles', 5, 2);
 
 insert into comment(content, score, difficulty, idUser, idRide)
 values('nice', 3, 4, 1, 1);

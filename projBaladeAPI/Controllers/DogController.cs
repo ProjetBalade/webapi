@@ -69,7 +69,13 @@ namespace projBaladeAPI.Controllers
         [ProducesResponseType(201)]
         public ActionResult<OutputDtoDog> Create([FromBody] InputDtoDog dog)
         {
-            return _useCaseCreateDog.Execute(dog);
+            if (HttpContext.Items["User"] is User user)
+            {
+                int userId = user.Id;
+                return _useCaseCreateDog.Execute(dog,userId);
+            }
+            return Unauthorized();
+           
         }
 
         [HttpPut]

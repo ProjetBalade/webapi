@@ -13,11 +13,17 @@ namespace Application.Services.UseCases.Dog
         {
             _dogRepository = dogRepository;
         }
+
         public OutputDtoDog Execute(InputDtoDog dto)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public OutputDtoDog Execute(InputDtoDog dto, int id)
         {
             var dogFromDto = Mapper.GetInstance().Map<Domain.Dog>(dto);
 
-            var dog = _dogRepository.Create(dogFromDto);
+            var dog = _dogRepository.Create(dogFromDto, id);
 
             return Mapper.GetInstance().Map<OutputDtoDog>(dog);
         }

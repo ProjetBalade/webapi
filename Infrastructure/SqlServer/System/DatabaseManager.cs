@@ -6,15 +6,15 @@ namespace Infrastructure.SqlServer.System
     public class DatabaseManager : IDatabaseManager
     {
         public void CreateDatabaseAndTables()
-        { 
+        {
             ReadAndExecuteFile(
-                    @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Init.sql");
+                @"/Users/aleynabastu/RiderProjects/projetBalade/webapi/Infrastructure/SqlServer/Resources/Init.sql");
         }
 
         public void FillTables()
         {
             ReadAndExecuteFile(
-                @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Data.sql");
+                @"/Users/aleynabastu/RiderProjects/projetBalade/webapi/Infrastructure/SqlServer/Resources/Data.sql");
         }
         
         private static void ReadAndExecuteFile(string filePath)
