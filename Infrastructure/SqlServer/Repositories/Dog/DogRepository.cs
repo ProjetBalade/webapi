@@ -56,7 +56,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             return reader.Read() ? _dogFactory.CreateFromSqlDataReader(reader) : null;
         }
 
-        public Domain.Dog Create(Domain.Dog dog)
+        public Domain.Dog Create(int idUser,Domain.Dog dog)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -70,7 +70,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
             command.Parameters.AddWithValue("@" + CoLNameDog, dog.NameDog);
             command.Parameters.AddWithValue("@" + CoLRaceDog, dog.RaceDog);
             command.Parameters.AddWithValue("@" + CoLDateBirth, dog.DateOfBirth);
-            command.Parameters.AddWithValue("@" + CoLIdUser, dog.IdUser);
+            command.Parameters.AddWithValue("@" + CoLIdUser, idUser);
         
             return new Domain.Dog
             {
@@ -78,7 +78,7 @@ namespace Infrastructure.SqlServer.Repositories.Dog
                 NameDog = dog.NameDog,
                 RaceDog = dog.RaceDog,
                 DateOfBirth = dog.DateOfBirth ,
-                IdUser = dog.IdUser
+                IdUser = idUser
             };
         }
 
