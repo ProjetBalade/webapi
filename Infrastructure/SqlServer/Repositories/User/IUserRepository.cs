@@ -13,6 +13,10 @@ namespace Infrastructure.SqlServer.Repositories.User
         Domain.User Update(int id, Domain.User user);
 
         Domain.User FindByNameAndPassword(string name, string password);
+        Domain.User FindByName(string name);
+        Domain.User FindByEmail(string email);
+        
+        
 
     }
 }

@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using Application.UseCases.User.Dtos.Dtos;
+using Application.UseCases.User.Exceptions;
 using Application.UseCases.Utils;
 using Infrastructure.SqlServer.Repositories.User;
 
@@ -15,8 +16,20 @@ namespace Application.UseCases.User.Dtos
             _userRepository = userRepository;
         }
 
-        public OutPutDtoUser Execute(InputDtoUser dto)
+        public OutPutDtoUser Execute(InputDtoUser dto) 
         {
+
+            if (_userRepository.FindByName(dto.Name) != null)
+            {
+                throw new NameAlreadyUsedException();
+            }
+
+            if (_userRepository.FindByEmail(dto.Email) != null)
+            {
+                throw new EmailAlreadyUsedException();
+            }
+            
+            
             var userFromDto = Mapper.GetInstance().Map<Domain.User>(dto);
 
             userFromDto.Password = ComputeSha256Hash(userFromDto.Password);

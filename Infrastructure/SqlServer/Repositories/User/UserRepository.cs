@@ -20,6 +20,8 @@ namespace Infrastructure.SqlServer.Repositories.User
         public static readonly string ReqUpdate = $"UPDATE {TableName} set {ColName} = @{ColName},{ColEmail} = @{ColEmail}, {ColPassword}=@{ColPassword} WHERE {ColId}= @{ColId}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId}=@{ColId}";
         public static readonly string ReqGetByNameAndPassword = $"SELECT * FROM {TableName} WHERE {ColName}=@{ColName} and {ColPassword}=@{ColPassword}";
+        public static readonly string ReqGetByName = $"SELECT * FROM {TableName} WHERE {ColName}=@{ColName}";
+        public static readonly string ReqGetByEmail = $"SELECT * FROM {TableName} WHERE {ColEmail}=@{ColEmail}";
         
         private readonly UserFactory _userFactory = new UserFactory();
 
@@ -153,6 +155,38 @@ namespace Infrastructure.SqlServer.Repositories.User
 
             command.Parameters.AddWithValue("@" + ColName, name);
             command.Parameters.AddWithValue("@" + ColPassword, password);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
+        }
+
+        public Domain.User FindByName(string name)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetByName
+            };
+
+            command.Parameters.AddWithValue("@" + ColName, name);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
+        }
+
+        public Domain.User FindByEmail(string email)
+        {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetByEmail
+            };
+
+            command.Parameters.AddWithValue("@" + ColEmail, email);
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
             return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
         }
