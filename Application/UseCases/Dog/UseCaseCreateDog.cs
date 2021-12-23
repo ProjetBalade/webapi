@@ -17,7 +17,16 @@ namespace Application.Services.UseCases.Dog
         {
             var dogFromDto = Mapper.GetInstance().Map<Domain.Dog>(dto);
 
-            var dog = _dogRepository.Create(dogFromDto);
+            var dog = _dogRepository.Create(0,dogFromDto);
+
+            return Mapper.GetInstance().Map<OutputDtoDog>(dog);
+        }
+        
+        public OutputDtoDog Execute(int idUser,InputDtoDog dto)
+        {
+            var dogFromDto = Mapper.GetInstance().Map<Domain.Dog>(dto);
+
+            var dog = _dogRepository.Create(idUser,dogFromDto);
 
             return Mapper.GetInstance().Map<OutputDtoDog>(dog);
         }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Application.UseCases.Ride.Exceptions;
+using GoogleMaps.LocationServices;
 using NotImplementedException = System.NotImplementedException;
 
 namespace Infrastructure.SqlServer.Repositories.Ride
@@ -9,6 +10,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
     public class RideRepository : IRideRepository
 
     {
+        
+        
         public const string TableName = "ride";
         private readonly RideFactory _rideFactory = new RideFactory();
 
@@ -56,7 +59,7 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             return rides;
         }
 
-        public Domain.Ride Create(Domain.Ride ride)
+        public Domain.Ride Create(int id,Domain.Ride ride)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -74,22 +77,23 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             command.Parameters.AddWithValue("@" + ColDifficulty,ride.Difficulty);
             command.Parameters.AddWithValue("@" + ColSchedule,ride.Schedule);
             command.Parameters.AddWithValue("@" + ColScore,ride.Score);
-            command.Parameters.AddWithValue("@" + ColIdUser,ride.IdUser);
-            command.Parameters.AddWithValue("@" + ColLatitude,ride.Latitude);
-            command.Parameters.AddWithValue("@" + ColLongitude,ride.Longitude);
+            command.Parameters.AddWithValue("@" + ColIdUser, id);
+            command.Parameters.AddWithValue("@" + ColLatitude, ride.Latitude);
+            command.Parameters.AddWithValue("@" + ColLongitude, ride.Longitude);
+            
             return new Domain.Ride
             {
                 Id = (int) command.ExecuteScalar(),
                 NameRide = ride.NameRide,
                 Place = ride.Place,
+                Latitude = ride.Latitude,
+                Longitude = ride.Longitude,
                 Description =ride.Description,
                 Website=ride.Website,
                 Difficulty=ride.Difficulty,
                 Schedule = ride.Schedule,
                 Score = ride.Score,
-                IdUser = ride.IdUser,
-                Latitude = ride.Latitude,
-                Longitude = ride.Longitude
+                IdUser = id,
             };
         }
 

@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using Application.UseCases.User.Dtos;
 using Application.UseCases.User.Dtos.Dtos;
+using Application.UseCases.User.Exceptions;
 using Infrastructure.SqlServer.Repositories.User;
 using Infrastructure.SqlServer.Repositories.User.Exceptions;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +51,20 @@ namespace projBaladeAPI.Controllers
         [ProducesResponseType(201)]
         public ActionResult<OutPutDtoUser> Create(InputDtoUser dto)
         {
-            return StatusCode(201, _useCaseCreateUser.Execute(dto));
+            try
+            {
+                var outPutDtoUser = _useCaseCreateUser.Execute(dto);
+                return StatusCode(201, outPutDtoUser);
+            }
+            catch (NameAlreadyUsedException e)
+            {
+                return StatusCode(5001);
+            }
+            catch (EmailAlreadyUsedException e)
+            {
+                return StatusCode(5002);
+            }
+            
         }
         
         [HttpDelete]

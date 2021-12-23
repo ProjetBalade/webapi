@@ -49,8 +49,13 @@ namespace projBaladeAPI.Controllers
         [HttpPost]
         public ActionResult<OutPutDtoRide> Create([FromBody] InputDtoRide ride)
         {
+            if (HttpContext.Items["User"] is User user)
+            {
+                int userId = user.Id;
+                return StatusCode(201, _caseCreateRide.Execute(userId,ride));
+            }
             //var validationResult = _userValidator.validateCreateUser(user);
-            return StatusCode(201, _caseCreateRide.Execute(ride));
+            return Unauthorized();
         }
         
         [HttpPut]
