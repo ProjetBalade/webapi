@@ -32,10 +32,14 @@ namespace Application.UseCases.Ride
         {
             var rideFromDto = Mapper.GetInstance().Map<Domain.Ride>(dto);
             var point = locationService.GetLatLongFromAddress(dto.Place);
-            var latitude = point.Latitude;
-            var longitude = point.Longitude;
-            rideFromDto.Latitude = latitude;
-            rideFromDto.Longitude = longitude;
+            if (point != null)
+            {
+                var latitude = point.Latitude;
+                var longitude = point.Longitude;
+                rideFromDto.Latitude = latitude;
+                rideFromDto.Longitude = longitude;
+            }
+            
             var rideFromDb = _rideRepository.Create(id,rideFromDto);
 
             return Mapper.GetInstance().Map<OutPutDtoRide>(rideFromDb);

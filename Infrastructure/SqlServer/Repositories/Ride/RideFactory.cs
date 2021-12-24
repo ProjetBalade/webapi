@@ -19,7 +19,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Score = reader.GetByte(reader.GetOrdinal(RideRepository.ColScore)),
                 IdUser = reader.GetInt32(reader.GetOrdinal(RideRepository.ColIdUser)),
                 Longitude = reader.GetDouble(reader.GetOrdinal(RideRepository.ColLongitude)),
-                Latitude = reader.GetDouble(reader.GetOrdinal(RideRepository.ColLatitude))
+                Latitude = reader.GetDouble(reader.GetOrdinal(RideRepository.ColLatitude)),
+                Accepted = reader.GetByte(reader.GetOrdinal(RideRepository.ColScore))!=0,
                 
                 
             };

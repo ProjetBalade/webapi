@@ -13,7 +13,8 @@ namespace Infrastructure.SqlServer.Repositories.User
                 Id = reader.GetInt32(reader.GetOrdinal(UserRepository.ColId)),
                 Name = reader.GetString(reader.GetOrdinal(UserRepository.ColName)),
                 Email = reader.GetString(reader.GetOrdinal(UserRepository.ColEmail)),
-                Password = reader.GetString(reader.GetOrdinal(UserRepository.ColPassword))
+                Password = reader.GetString(reader.GetOrdinal(UserRepository.ColPassword)),
+                IsAdmin = reader.GetByte(reader.GetOrdinal(UserRepository.ColIsAdmin)) == 1
             };
         }
     }

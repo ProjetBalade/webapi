@@ -7,7 +7,8 @@ create table users
 id int identity primary key,
 name varchar(255) not null,
 email varchar(255) not null,
-password varchar(255) not null
+password varchar(255) not null,
+isAdmin tinyint not null
 );
 
 create table dog
@@ -34,8 +35,9 @@ create table ride
     difficulty tinyint not null,
     schedule varchar(255),
     score tinyint,
-    double precision latitude,
-    double precision longitude,
+    latitude double precision,
+    longitude double precision,
+    tinyint accepted not null,
     idUser int foreign key references users(id)
 );
 

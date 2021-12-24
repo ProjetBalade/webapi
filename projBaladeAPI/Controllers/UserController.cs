@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Application.UseCases.User;
 using Application.UseCases.User.Dtos;
 using Application.UseCases.User.Dtos.Dtos;
 using Application.UseCases.User.Exceptions;
@@ -21,13 +22,14 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseGetUser _useCaseGetUser;
         private readonly UseCaseUpdateUser _useCaseUpdateUser;
         private readonly UseCaseAuthenticateUser _useCaseAuthenticateUser;
+        private readonly UseCaseIsAdmin _useCaseIsAdmin;
         
         public UserController(
             UseCaseGetAllUser useCaseGetAllUser,
             UseCaseCreateUser useCaseCreateUser,
             UseCaseDeleteUser useCaseDeleteUser,
             UseCaseGetUser useCaseGetUser,
-            UseCaseUpdateUser useCaseUpdateUser, UseCaseAuthenticateUser authenticateUser)
+            UseCaseUpdateUser useCaseUpdateUser, UseCaseAuthenticateUser authenticateUser,UseCaseIsAdmin useCaseIsAdmin)
         {
             _useCaseGetAllUser = useCaseGetAllUser;
             _useCaseCreateUser = useCaseCreateUser;
@@ -35,6 +37,7 @@ namespace projBaladeAPI.Controllers
             _useCaseGetUser = useCaseGetUser;
             _useCaseUpdateUser = useCaseUpdateUser;
             _useCaseAuthenticateUser = authenticateUser;
+            _useCaseIsAdmin = useCaseIsAdmin;
         }
         
         [HttpGet]
@@ -120,6 +123,8 @@ namespace projBaladeAPI.Controllers
 
             return Ok(response);
         }
+        
+        
         
         // [Authorize]
         // [HttpGet]

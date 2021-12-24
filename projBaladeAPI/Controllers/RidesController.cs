@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Application.UseCases.Ride;
 using Application.UseCases.Ride.Dtos;
 using Application.UseCases.Ride.Exceptions;
+using Application.UseCases.User;
 using Domain;
 using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
@@ -22,8 +23,15 @@ namespace projBaladeAPI.Controllers
         private readonly UseCaseUpdateRide _useCaseUpdateRide;
         private readonly UseCaseDeleteRide _useCaseDeleteRide; 
         private readonly UseCaseGetRideById _useCaseGetRideById; 
+        
+        //admin use case
+        private readonly UseCaseGetAllPendingRide _useCaseGetAllPendingRide;
+        private readonly UseCaseRefuseRide _useCaseRefuseRide;
+        private readonly UseCaseValidateRide _useCaseValidateRide;
+        private readonly UseCaseIsAdmin _useCaseIsAdmin;
 
-        public RidesController(UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide, UseCaseDeleteRide useCaseDeleteRide, UseCaseGetRideById useCaseGetRideById)
+
+        public RidesController(UseCaseGetAllRide useCaseGetAllRide, UseCaseCreateRide useCaseCreateRide,UseCaseUpdateRide updateRide, UseCaseDeleteRide useCaseDeleteRide, UseCaseGetRideById useCaseGetRideById,UseCaseGetAllPendingRide useCaseGetAllPendingRide,UseCaseValidateRide useCaseValidateRide, UseCaseRefuseRide useCaseRefuseRide, UseCaseIsAdmin useCaseIsAdmin)
         {
          
             _useCaseGetAllRide = useCaseGetAllRide;
@@ -31,6 +39,10 @@ namespace projBaladeAPI.Controllers
             _useCaseUpdateRide = updateRide;
             _useCaseDeleteRide = useCaseDeleteRide;
             _useCaseGetRideById = useCaseGetRideById;
+            _useCaseGetAllPendingRide = useCaseGetAllPendingRide;
+            _useCaseValidateRide = useCaseValidateRide;
+            _useCaseRefuseRide = useCaseRefuseRide;
+            _useCaseIsAdmin = useCaseIsAdmin;
 
         }
 
@@ -41,10 +53,46 @@ namespace projBaladeAPI.Controllers
         [HttpGet]
         public ActionResult<List<OutPutDtoRide>> GetAll()
         {
-           
             return _useCaseGetAllRide.Execute();
         }
         
+        [Authorize]
+        [HttpGet]
+        [Route("pending")]
+        public ActionResult<List<OutPutDtoRide>> GetAllPendingRide()
+        {
+            if (HttpContext.Items["User"] is User user && _useCaseIsAdmin.Execute(user.Id))
+            {
+                return _useCaseGetAllPendingRide.Execute();
+            }
+
+            return Unauthorized();
+        }
+
+        [HttpPost]
+        [Route("{id:int}/accept")]
+        public ActionResult<OutPutDtoRide> ValidateRide(int id)
+        {
+            if (HttpContext.Items["User"] is User user && _useCaseIsAdmin.Execute(user.Id))
+            {
+                return StatusCode(200, _useCaseValidateRide.Execute(id));
+            }
+
+            return Unauthorized();
+        }
+        
+        [HttpPost]
+        [Route("{id:int}/refuse")]
+        public ActionResult<bool> RefuseRide(int id)
+        {
+            if (HttpContext.Items["User"] is User user && _useCaseIsAdmin.Execute(user.Id))
+            {
+                _useCaseRefuseRide.Execute(id);
+                return StatusCode(200, true);
+            }
+
+            return Unauthorized();
+        }
         
         [HttpPost]
         public ActionResult<OutPutDtoRide> Create([FromBody] InputDtoRide ride)

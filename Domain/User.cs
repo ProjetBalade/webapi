@@ -12,6 +12,8 @@ namespace Domain
         //The [JsonIgnore] attribute prevents the password property from being serialized and returned in api responses.
         [JsonIgnore]
         public string Password { get; set; }
+        
+        public bool IsAdmin { get; set; }
 
         public User()
         {

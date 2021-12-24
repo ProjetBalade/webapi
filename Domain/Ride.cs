@@ -14,8 +14,8 @@ namespace Domain
         public Byte Score { get; set; }
         public int IdUser { get; set; }
         public double Longitude { get; set; }
-        
         public double Latitude { get; set; }
+        public bool Accepted { get; set; }
 
         public Ride(int idUser)
         {

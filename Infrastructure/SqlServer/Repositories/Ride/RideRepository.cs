@@ -25,13 +25,14 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             ColScore = "score",
             ColIdUser = "idUser",
             ColLongitude = "longitude",
-            ColLatitude = "latitude";
+            ColLatitude = "latitude",
+            ColAccepted="accepted";
 
-        public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
+        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} where {ColAccepted}=1";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
-        public static readonly string ReqCreateRide = $"INSERT INTO {TableName}({ColNameRide}, {ColPlace}, {ColDescription}, {ColWebsite}, {ColDifficulty}, {ColSchedule}, {ColScore}, {ColIdUser}, {ColLatitude}, {ColLongitude}) OUTPUT INSERTED.{ColId} VALUES(@{ColNameRide}, @{ColPlace}, @{ColDescription}, @{ColWebsite}, @{ColDifficulty}, @{ColSchedule}, @{ColScore}, @{ColIdUser}, @{ColLatitude}, @{ColLongitude})";
-        
-        public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColNameRide} = @{ColNameRide}, {ColPlace} = @{ColPlace}, {ColDescription} = @{ColDescription}, {ColWebsite} = @{ColWebsite}, {ColDifficulty} = @{ColDifficulty}, {ColSchedule} = @{ColSchedule}, {ColScore} = @{ColScore}, {ColIdUser} = @{ColIdUser}, {ColLatitude} = @{ColLatitude}, {ColLongitude} = @{ColLongitude} WHERE {ColId} = @{ColId}";
+        public static readonly string ReqCreateRide = $"INSERT INTO {TableName}({ColNameRide}, {ColPlace}, {ColDescription}, {ColWebsite}, {ColDifficulty}, {ColSchedule}, {ColScore}, {ColIdUser}, {ColLatitude}, {ColLongitude}, {ColAccepted}) OUTPUT INSERTED.{ColId} VALUES(@{ColNameRide}, @{ColPlace}, @{ColDescription}, @{ColWebsite}, @{ColDifficulty}, @{ColSchedule}, @{ColScore}, @{ColIdUser}, @{ColLatitude}, @{ColLongitude}, 0)";
+        public static readonly string ReqGetAllPending = $"SELECT * FROM {TableName} where {ColAccepted}=0";
+        public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColNameRide} = @{ColNameRide}, {ColPlace} = @{ColPlace}, {ColDescription} = @{ColDescription}, {ColWebsite} = @{ColWebsite}, {ColDifficulty} = @{ColDifficulty}, {ColSchedule} = @{ColSchedule}, {ColScore} = @{ColScore}, {ColIdUser} = @{ColIdUser}, {ColLatitude} = @{ColLatitude}, {ColLongitude} = @{ColLongitude}, {ColAccepted} = @{ColAccepted} WHERE {ColId} = @{ColId}";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
 
 
@@ -46,6 +47,30 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             {
                 Connection = connection,
                 CommandText = ReqGetAll
+
+            };
+            
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (reader.Read())
+            {
+                rides.Add(_rideFactory.CreateFromSqlDataReader(reader));
+            }
+
+            return rides;
+        }
+
+        public List<Domain.Ride> GetAllPending()
+        {
+            var rides = new List<Domain.Ride>();
+
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            var command = new SqlCommand
+            {
+                Connection = connection,
+                CommandText = ReqGetAllPending
 
             };
             
@@ -144,6 +169,7 @@ namespace Infrastructure.SqlServer.Repositories.Ride
             command.Parameters.AddWithValue("@" + ColIdUser, ride.IdUser);
             command.Parameters.AddWithValue("@" + ColLatitude, ride.Latitude);
             command.Parameters.AddWithValue("@" + ColLongitude, ride.Longitude);
+            command.Parameters.AddWithValue("@" + ColAccepted, ride.Accepted);
             command.ExecuteScalar();
             
             return new Domain.Ride
@@ -158,7 +184,8 @@ namespace Infrastructure.SqlServer.Repositories.Ride
                 Score = ride.Score,
                 IdUser = ride.IdUser,
                 Latitude = ride.Latitude,
-                Longitude = ride.Longitude
+                Longitude = ride.Longitude,
+                Accepted = ride.Accepted
             };
         }
 

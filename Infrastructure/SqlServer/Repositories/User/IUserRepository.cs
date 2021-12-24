@@ -15,8 +15,10 @@ namespace Infrastructure.SqlServer.Repositories.User
         Domain.User FindByNameAndPassword(string name, string password);
         Domain.User FindByName(string name);
         Domain.User FindByEmail(string email);
-        
-        
+
+        bool isAdmin(int id);
+
+
 
     }
 }

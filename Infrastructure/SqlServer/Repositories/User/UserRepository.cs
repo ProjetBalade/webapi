@@ -12,10 +12,11 @@ namespace Infrastructure.SqlServer.Repositories.User
         public const string ColId = "id",
             ColName = "name",
             ColEmail = "email",
-            ColPassword = "password";
+            ColPassword = "password",
+            ColIsAdmin = "isAdmin";
         
         public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
-        public static readonly string ReqCreate = $"INSERT INTO {TableName}({ColName}, {ColEmail}, {ColPassword}) OUTPUT INSERTED.{ColId} VALUES(@{ColName}, @{ColEmail}, @{ColPassword})";
+        public static readonly string ReqCreate = $"INSERT INTO {TableName}({ColName}, {ColEmail}, {ColPassword}, {ColIsAdmin}) OUTPUT INSERTED.{ColId} VALUES(@{ColName}, @{ColEmail}, @{ColPassword}, 0)";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqUpdate = $"UPDATE {TableName} set {ColName} = @{ColName},{ColEmail} = @{ColEmail}, {ColPassword}=@{ColPassword} WHERE {ColId}= @{ColId}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId}=@{ColId}";
@@ -37,9 +38,7 @@ namespace Infrastructure.SqlServer.Repositories.User
                 Connection = connection,
                 CommandText = ReqGetAll
             };
-
-          
-
+            
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
             while (reader.Read())
             {
@@ -189,6 +188,12 @@ namespace Infrastructure.SqlServer.Repositories.User
             command.Parameters.AddWithValue("@" + ColEmail, email);
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
             return reader.Read() ? _userFactory.CreateFromSqlReader(reader) : null;
+        }
+
+        public bool isAdmin(int id)
+        {
+            var user = GetById(id);
+            return user?.IsAdmin ?? false;
         }
     }
 }

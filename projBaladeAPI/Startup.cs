@@ -10,6 +10,7 @@ using Infrastructure.SqlServer.Repositories.Ride;
 using Infrastructure.SqlServer.System;
 using Application.UseCases.Comment;
 using Application.UseCases.Message;
+using Application.UseCases.User;
 using Application.UseCases.User.Dtos;
 using Infrastructure.SqlServer.Repositories.Comment;
 using Infrastructure.SqlServer.Repositories.Message;
@@ -99,6 +100,10 @@ namespace projBaladeAPI
             services.AddSingleton<UseCaseGetUser>();
             services.AddSingleton<UseCaseUpdateUser>();
             services.AddSingleton<UseCaseAuthenticateUser>();
+            services.AddSingleton<UseCaseIsAdmin>();
+            services.AddSingleton<UseCaseGetAllPendingRide>();
+            services.AddSingleton<UseCaseRefuseRide>();
+            services.AddSingleton<UseCaseValidateRide>();
 
 
         }
