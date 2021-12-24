@@ -31,7 +31,7 @@ namespace Application.UseCases.Ride
         
         public OutPutDtoRide Execute(InputDtoRide dto, int id)
         {
-            /*var rideFromDto = Mapper.GetInstance().Map<Domain.Ride>(dto);
+            var rideFromDto = Mapper.GetInstance().Map<Domain.Ride>(dto);
             var point = locationService.GetLatLongFromAddress(dto.Place);
             if (point != null)
             {
@@ -43,8 +43,7 @@ namespace Application.UseCases.Ride
             
             var rideFromDb = _rideRepository.Create(id,rideFromDto);
 
-            return Mapper.GetInstance().Map<OutPutDtoRide>(rideFromDb);*/
-            throw new System.NotImplementedException();
+            return Mapper.GetInstance().Map<OutPutDtoRide>(rideFromDb);
         }
         
     }

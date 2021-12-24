@@ -16,14 +16,14 @@ namespace Infrastructure.SqlServer.Repositories.Message
             ColIdSender = "idSender",
             ColObject = "object";
         
-        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {ColIdSender} = @{ColIdSender}";
+        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {ColIdRecipient} = @{ColIdRecipient}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqCreate = $"INSERT INTO {TableName}({ColContent}, {ColIdRecipient}, {ColIdSender}, {ColObject}) OUTPUT INSERTED.{ColId} VALUES(@{ColContent},@{ColIdRecipient},@{ColIdSender},@{ColObject})";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColContent} = @{ColContent}, {ColIdRecipient} = @{ColIdRecipient}, {ColIdSender} = @{ColIdSender},  {ColObject} = @{ColObject}  WHERE {ColId} = @{ColId}";
 
         
-        public List<Domain.Message> GetAll(int idSender)
+        public List<Domain.Message> GetAll(int idReceiver)
         {
             var messages = new List<Domain.Message>();
 
@@ -31,7 +31,7 @@ namespace Infrastructure.SqlServer.Repositories.Message
             connection.Open();
 
             var command = new SqlCommand {Connection = connection, CommandText = ReqGetAll};
-            command.Parameters.AddWithValue("@" + ColIdSender, idSender);
+            command.Parameters.AddWithValue("@" + ColIdRecipient, idReceiver);
             var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
             /*{
                 Connection = connection,

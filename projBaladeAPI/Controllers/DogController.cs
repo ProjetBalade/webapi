@@ -73,7 +73,7 @@ namespace projBaladeAPI.Controllers
             if (HttpContext.Items["User"] is User user)
             {
                 int userId = user.Id;
-                return _useCaseCreateDog.Execute(dog, userId);
+                return StatusCode(201,_useCaseCreateDog.Execute(dog, userId));
             }
             return Unauthorized();
         }

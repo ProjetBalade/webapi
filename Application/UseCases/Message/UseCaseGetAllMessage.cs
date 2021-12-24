@@ -13,9 +13,9 @@ namespace Application.UseCases.Message
         {
             _messageRepository= messageRepository;
         }
-        public List<OutputDtoMessage> Execute(int idSender)
+        public List<OutputDtoMessage> Execute(int idReceiver)
         {
-            var messages = _messageRepository.GetAll(idSender);
+            var messages = _messageRepository.GetAll(idReceiver);
 
             return Mapper.GetInstance().Map<List<OutputDtoMessage>>(messages);
         }
