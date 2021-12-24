@@ -8,13 +8,13 @@ namespace Infrastructure.SqlServer.System
         public void CreateDatabaseAndTables()
         { 
             ReadAndExecuteFile(
-                    @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Init.sql");
+                    @"C:\Users\elili\RiderProjects\webapi\Infrastructure\SqlServer\Resources\Init.sql");
         }
 
         public void FillTables()
         {
             ReadAndExecuteFile(
-                @"C:\Users\nicod\Documents\Ecole\HELHa\BAC3\Projet\ProjetBalade\Infrastructure\SqlServer\Resources\Data.sql");
+                @"C:\Users\elili\RiderProjects\webapi\Infrastructure\SqlServer\Resources\Data.sql");
         }
         
         private static void ReadAndExecuteFile(string filePath)

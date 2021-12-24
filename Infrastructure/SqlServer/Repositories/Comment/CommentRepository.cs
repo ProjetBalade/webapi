@@ -124,7 +124,7 @@ namespace Infrastructure.SqlServer.Repositories.Comment
 
             return new Domain.Comment
             {
-                Id = id,
+                Id = id,//(int) command.ExecuteScalar(),
                 Content = comment.Content,
                 Score = comment.Score,
                 Difficulty = comment.Difficulty,

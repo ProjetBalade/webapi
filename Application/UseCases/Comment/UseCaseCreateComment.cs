@@ -22,5 +22,10 @@ namespace Application.UseCases.Comment
 
             return Mapper.GetInstance().Map<OutputDtoComment>(commentFromDb);
         }
+        
+        public OutputDtoComment Execute(InputDtoCreateComment dto, int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

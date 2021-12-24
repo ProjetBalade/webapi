@@ -1,4 +1,5 @@
-
+drop database if exists dbBalade;
+create database dbBalade;
 
 use dbBalade;
 
@@ -34,8 +35,8 @@ create table ride
     difficulty tinyint not null,
     schedule varchar(255),
     score tinyint,
-    double precision latitude,
-    double precision longitude,
+    latitude double precision,
+    longitude double precision,
     idUser int foreign key references users(id)
 );
 

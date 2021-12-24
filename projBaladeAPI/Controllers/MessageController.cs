@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Application.Services.UseCases.Dog.DtosDog;
 using Application.UseCases.Message;
 using Application.UseCases.Message.Dtos;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace projBaladeAPI.Controllers
@@ -29,15 +30,20 @@ namespace projBaladeAPI.Controllers
         [Route("getall")]
         public ActionResult<List<OutputDtoMessage>> GetAll()
         {
-            return _useCaseGetAllMessage.Execute();
+            if (HttpContext.Items["User"] is User user)
+            {
+                int userId = user.Id;
+                return _useCaseGetAllMessage.Execute(userId);
+            }
+            return Unauthorized();
         }
-        
-        [HttpPost]
+
+        /*[HttpPost]
         public ActionResult<OutputDtoMessage> Create([FromBody] InputDtoMessage message)
         {
             //var validationResult = _userValidator.validateCreateUser(user);
             return StatusCode(201, _useCaseCreateMessage.Execute(message));
-        }
+        }*/
 
         [HttpDelete]
         [Route("{id:int}")]
@@ -50,6 +56,20 @@ namespace projBaladeAPI.Controllers
 
             return NotFound();
 
+        }
+        [HttpPost]
+        [Route("create")]
+        [ProducesResponseType(201)]
+        public ActionResult<OutputDtoMessage> Create([FromBody] InputDtoMessage message)
+        {
+            
+            if (HttpContext.Items["User"] is User user)
+            {
+                int userId = user.Id;
+                return _useCaseCreateMessage.Execute(message, userId);
+            }
+            return Unauthorized();
+            //return StatusCode(201, _useCaseCreateMessage.Execute(message));
         }
         
         [HttpGet]

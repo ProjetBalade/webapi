@@ -31,7 +31,7 @@ namespace projBaladeAPI.Controllers
         }
         
         [HttpGet]
-        [Route("rides/{idRide:int}/comments")]
+        [Route("comments/rides/{idRide:int}")]
         public ActionResult<List<OutputDtoComment>> GetAll(int idRide)
         {
             return _useCaseGetAllComments.Execute(idRide);

@@ -15,28 +15,31 @@ namespace Infrastructure.SqlServer.Repositories.Message
             ColIdRecipient = "idRecipient",
             ColIdSender = "idSender",
             ColObject = "object";
-        public static readonly string ReqGetAll = $"SELECT * FROM {TableName}";
+        
+        public static readonly string ReqGetAll = $"SELECT * FROM {TableName} WHERE {ColIdSender} = @{ColIdSender}";
         public static readonly string ReqGetById = $"SELECT * FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqCreate = $"INSERT INTO {TableName}({ColContent}, {ColIdRecipient}, {ColIdSender}, {ColObject}) OUTPUT INSERTED.{ColId} VALUES(@{ColContent},@{ColIdRecipient},@{ColIdSender},@{ColObject})";
         public static readonly string ReqDelete = $"DELETE FROM {TableName} WHERE {ColId} = @{ColId}";
         public static readonly string ReqUpdate = $"UPDATE {TableName} SET {ColContent} = @{ColContent}, {ColIdRecipient} = @{ColIdRecipient}, {ColIdSender} = @{ColIdSender},  {ColObject} = @{ColObject}  WHERE {ColId} = @{ColId}";
 
         
-        public List<Domain.Message> GetAll()
+        public List<Domain.Message> GetAll(int idSender)
         {
             var messages = new List<Domain.Message>();
 
             using var connection = Database.GetConnection();
             connection.Open();
 
-            var command = new SqlCommand
-            {
+            var command = new SqlCommand {Connection = connection, CommandText = ReqGetAll};
+            command.Parameters.AddWithValue("@" + ColIdSender, idSender);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            /*{
                 Connection = connection,
                 CommandText = ReqGetAll
 
             };
             
-            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            var reader = command.ExecuteReader(CommandBehavior.CloseConnection);*/
 
             while (reader.Read())
             {
@@ -46,7 +49,7 @@ namespace Infrastructure.SqlServer.Repositories.Message
             return messages;
         }
 
-        public Domain.Message Create(Domain.Message message)
+        public Domain.Message Create(Domain.Message message, int idSender)
         {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -59,11 +62,18 @@ namespace Infrastructure.SqlServer.Repositories.Message
             
             command.Parameters.AddWithValue("@" + ColContent, message.Content);
             command.Parameters.AddWithValue("@" + ColIdRecipient, message.IdRecipient);
-            command.Parameters.AddWithValue("@" + ColIdSender, message.IdSender);
+            command.Parameters.AddWithValue("@" + ColIdSender, idSender);
             command.Parameters.AddWithValue("@" + ColObject, message.Object);
-            message.Id = (int) command.ExecuteScalar();
+
+            return new Domain.Message
+            {
+                Id = (int) command.ExecuteScalar(),
+                Content = message.Content,
+                IdRecipient = message.IdRecipient,
+                IdSender = idSender,
+                Object = message.Object
+            };
             
-            return message;
         }
 
         public Domain.Message Update(int id, Domain.Message message)

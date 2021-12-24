@@ -4,8 +4,8 @@ namespace Infrastructure.SqlServer.Repositories.Message
 {
     public interface IMessageRepository
     {
-        List<Domain.Message> GetAll();
-        Domain.Message Create(Domain.Message message);
+        List<Domain.Message> GetAll(int idSender);
+        Domain.Message Create(Domain.Message message, int idSender);
 
         Domain.Message Update(int id, Domain.Message message);
         void Delete(int id);
