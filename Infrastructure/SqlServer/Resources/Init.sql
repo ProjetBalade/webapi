@@ -1,4 +1,5 @@
-
+drop database if exists dbBalade;
+create database dbBalade;
 
 use dbBalade;
 

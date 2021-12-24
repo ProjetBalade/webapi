@@ -4,7 +4,7 @@ namespace Infrastructure
 {
     public class Database
     {
-        private const string ConnectionString = "Server=127.0.0.1,1433;Database=dbBalade;User Id=SA;Password=<YourStrong@Passw0rd>";
+        private const string ConnectionString = "Server = LAPTOP-0UI6MLO7; Database = dbBalade; Integrated Security = SSPI";
 
         public static SqlConnection GetConnection()
         {

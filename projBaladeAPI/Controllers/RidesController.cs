@@ -100,7 +100,7 @@ namespace projBaladeAPI.Controllers
             if (HttpContext.Items["User"] is User user)
             {
                 int userId = user.Id;
-                return StatusCode(201, _caseCreateRide.Execute(userId,ride));
+                return StatusCode(201, _caseCreateRide.Execute(ride));
             }
             //var validationResult = _userValidator.validateCreateUser(user);
             return Unauthorized();

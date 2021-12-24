@@ -13,14 +13,14 @@ namespace Application.UseCases.Message
         {
             _messageRepository= messageRepository;
         }
-        public List<OutputDtoMessage> Execute()
+        public List<OutputDtoMessage> Execute(int idSender)
         {
-            var messages = _messageRepository.GetAll();
+            var messages = _messageRepository.GetAll(idSender);
 
             return Mapper.GetInstance().Map<List<OutputDtoMessage>>(messages);
         }
 
-        public List<OutputDtoMessage> Execute(int id)
+        public List<OutputDtoMessage> Execute()
         {
             throw new System.NotImplementedException();
         }
